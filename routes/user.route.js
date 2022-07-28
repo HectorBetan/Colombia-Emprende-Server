@@ -20,5 +20,5 @@ router.route('/').get((req, res) => {
     console.log(data)
     }
     })
-   })
+})
 module.exports = router;
