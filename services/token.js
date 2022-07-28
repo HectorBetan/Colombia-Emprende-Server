@@ -8,6 +8,6 @@ function createToken(user){
         tipo_usuario:usuario.tipo_usuario
     }
     const token= process.env.CLAVE;
-    return jwt.encode(payload, token)
+    return jwt.sign(payload, token)
 }
 module.exports ={createToken}
