@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
  extended: true
 }));
 app.use(cors());
-app.use('/', userRoute )
+app.use('/users', userRoute )
 // PORT
 app.set("PORT", process.env.PORT || 4000);
 app.listen(app.get("PORT"), () => {
@@ -31,6 +31,8 @@ app.listen(app.get("PORT"), () => {
 // 404 Error
 app.use((req, res, next) => {
     next(createError(404));
+    res.status(404)
+    res.send('404 Ruta no encontrada')
 });
 app.use(function (err, req, res, next) {
     console.error(err.message);
