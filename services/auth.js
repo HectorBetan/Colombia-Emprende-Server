@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const  tokenSecret =require("../services/token");
 require('dotenv').config({path:"./.env"});
 function isAuth (req, res, next){
     if(!req.headers.authorization){
