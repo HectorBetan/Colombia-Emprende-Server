@@ -10,10 +10,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
     useNewUrlParser: true
 }).then(() => {
-    console.log('Database sucessfully connected!')
+    console.log('Conectado a la base de datos!')
 },
     error => {
-    console.log('Could not connect to database : ' + error)
+    console.log('No se puede conectar a la base de datos: ' + error)
     }
 )
 const app = express();
@@ -30,13 +30,12 @@ app.listen(app.get("PORT"), () => {
 });
 // 404 Error
 function createError(codigo, res) {
-    res.status(codigo).send('Error'+codigo+': La ruta no existe');
+    res.status(codigo).send('Error '+codigo+': La ruta no existe');
 }
 app.use((req, res, next) => {
     next(createError(404));
 });
 app.use(function (err, req, res, next) {
-    console.error(err.message);
     if (!err.statusCode) err.statusCode = 500;
     res.status(err.statusCode).send('Error:'+ err.statusCode+' '+err.message);
 });
