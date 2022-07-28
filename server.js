@@ -36,13 +36,9 @@ app.use((req, res, next) => {
     next(createError(404));
 });
 app.use(function (err, req, res, next) {
-    console.error('Error '+err.message);
+    console.error('Error: '+err.message);
     if (err.message === '404') {
-        res.status(404).send('Error 404');
-        res.render('error', {
-            title: 'Error 404',
-            message: 'Pagina no encontrada'
-            });
+        res.status(404).send('Error 404: No se encontró el recurso');
     }
     else if (!err.statusCode) {
         err.statusCode = 500;
