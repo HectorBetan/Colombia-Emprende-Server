@@ -2,7 +2,7 @@ let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-let dbConfig = require('./Database/db');
+let dbConfig = require('./database/db');
 // Express Route
 const userRoute = require('./routes/user.route')
 // Connecting mongoDB Database
