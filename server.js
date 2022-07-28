@@ -31,10 +31,10 @@ app.listen(app.get("PORT"), () => {
 // 404 Error
 app.use((err, req, res, next) => {
     next(createError(404));
-    console.error(err.status);
+    console.error(err);
 });
 app.use(function (err, req, res, next) {
-    console.error(err);
+    console.error(err.status);
     if (!err.status) err.status = 500;
     res.status(err.status).send('Error:'+ err.status+' '+err.message);
 });
