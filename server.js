@@ -39,6 +39,10 @@ app.use(function (err, req, res, next) {
     console.error('Error '+err.message);
     if (err.message === '404') {
         res.status(404).send('Error 404');
+        res.render('error', {
+            title: 'Error 404',
+            message: 'Pagina no encontrada'
+            });
     }
     else if (!err.statusCode) {
         err.statusCode = 500;
