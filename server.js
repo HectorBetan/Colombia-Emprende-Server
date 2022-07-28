@@ -31,11 +31,14 @@ app.listen(app.get("PORT"), () => {
 // 404 Error
 app.use((err, req, res, next) => {
     next(createError(404));
+    if (err.status === 404) {
+        res.send('404 Not Found');
+    }
 });
 app.use(function (err, req, res, next) {
-    console.error(err.status);
-    if (!err.status) err.status = 500;
-    res.status(err.status).send('Error:'+ err.status+' '+err.message);
+    console.error(err.statusCode);
+    if (!err.statusCode) err.statusCode = 500;
+    res.status(err.statusCode).send('Error:'+ err.status+' '+err.message);
 });
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
