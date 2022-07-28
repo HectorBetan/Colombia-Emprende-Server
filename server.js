@@ -31,7 +31,6 @@ app.listen(app.get("PORT"), () => {
 // 404 Error
 app.use((err, req, res, next) => {
     next(createError(404));
-    console.error(err);
 });
 app.use(function (err, req, res, next) {
     console.error(err.status);
