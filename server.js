@@ -30,13 +30,13 @@ app.listen(app.get("PORT"), () => {
 });
 // 404 Error
 function createError(codigo) {
-    console.log('error: ' + codigo);
     throw new Error('404');
 }
 app.use((req, res, next) => {
     next(createError(404));
 });
 app.use(function (err, req, res, next) {
+    console.error(err.message);
     if (err.message === '404') {
         res.status(404).send("Not found");
     }
