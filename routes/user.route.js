@@ -15,7 +15,7 @@ router.route('/create-user').post((req, res, next) => {
         }
     })
 });
-router.route('/get-user').get((req, res) => {
+router.route('/get-user').post((req, res) => {
     const query = {Uid: req.query.Uid};
     userSchema.find(query,(error, data) => {
     if (error) {
