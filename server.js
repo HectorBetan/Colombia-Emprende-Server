@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use('/users', userRoute )
 // PORT
-app.set("PORT", process.env.PORT || 3000);
+app.set("PORT", process.env.PORT || 4000);
 app.listen(app.get("PORT"), () => {
     console.log(`Servidor iniciado en el puerto: ${app.get("PORT")}`);
 });
