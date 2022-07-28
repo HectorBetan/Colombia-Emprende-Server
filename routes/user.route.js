@@ -14,7 +14,7 @@ router.route('/create-user').post((req, res, next) => {
         }
     })
 });
-router.route(`/get-user/${uid}`).post((req, res) => {
+router.route(`/get-user/${uid}`).get((req, res) => {
     const query = {Uid: req.params.uid};
     userSchema.findOne(query,(error, data) => {
     if (error) {
