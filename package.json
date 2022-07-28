@@ -4,6 +4,7 @@
   "description": "Colombia Emprende App backend",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "test"
   },
   "author": "Hector Betancourt",
