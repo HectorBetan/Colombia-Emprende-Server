@@ -33,6 +33,7 @@ app.use((req, res, next) => {
     next(createError(404));
     res.status(404)
     res.send('404 Ruta no encontrada')
+    res.render('404')
 });
 app.use(function (err, req, res, next) {
     console.error(err.message);
