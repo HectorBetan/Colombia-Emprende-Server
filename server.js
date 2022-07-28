@@ -29,15 +29,13 @@ app.listen(app.get("PORT"), () => {
     console.log(`Servidor iniciado en el puerto: ${app.get("PORT")}`);
 });
 // 404 Error
-app.use((err, req, res, next) => {
+app.use((req, res, next) => {
     next(createError(404));
-    console.log(err);
-    console.log(res);
 });
 app.use(function (err, req, res, next) {
     console.error(err.message);
     if (!err.statusCode) err.statusCode = 500;
-    res.status(err.statusCode).send(err.message);
+    res.status(err.statusCode).send('Error: Ruta no Definida');
 });
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
