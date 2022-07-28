@@ -29,11 +29,14 @@ app.listen(app.get("PORT"), () => {
     console.log(`Servidor iniciado en el puerto: ${app.get("PORT")}`);
 });
 // 404 Error
-function createError(codigo, res) {
-    res.status(codigo).send('Error '+codigo+': La ruta no existe');
+function createError(codigo) {
+    return('Error '+codigo+': La ruta no existe');
 }
 app.use((req, res, next) => {
-    next(createError(404));
+    const er = next(createError(404));
+    if (er) {
+        res.status(404).send(er);
+    }
 });
 app.use(function (err, req, res, next) {
     if (!err.statusCode) err.statusCode = 500;
