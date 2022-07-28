@@ -25,7 +25,8 @@ app.use(cors());
 app.use('/users', userRoute )
 
 // PORT
-const port = process.env.PORT || 4000;
+
+const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
@@ -37,4 +38,11 @@ app.use(function (err, req, res, next) {
     console.error(err.message);
     if (!err.statusCode) err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
+});
+app.use((req, res, next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, ContentType, Accept");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
 });
