@@ -30,13 +30,10 @@ app.listen(app.get("PORT"), () => {
 });
 // 404 Error
 function createError(codigo) {
-    return('Error '+codigo+': La ruta no existe');
+    console.log('error: ' + codigo);
 }
 app.use((req, res, next) => {
-    const er = next(createError(404));
-    if (er) {
-        res.send(er);
-    }
+    next(createError(404));
 });
 app.use(function (err, req, res, next) {
     if (!err.statusCode) err.statusCode = 500;
