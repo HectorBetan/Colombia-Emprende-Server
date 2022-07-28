@@ -35,7 +35,7 @@ function createError(codigo) {
 app.use((req, res, next) => {
     const er = next(createError(404));
     if (er) {
-        res.status(404).send(er);
+        res.send(er);
     }
 });
 app.use(function (err, req, res, next) {
