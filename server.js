@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
  extended: true
 }));
 app.use(cors());
-app.use('/users', userRoute )
+app.use('/', userRoute )
 // PORT
 app.set("PORT", process.env.PORT || 4000);
 app.listen(app.get("PORT"), () => {
