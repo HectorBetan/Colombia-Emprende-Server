@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 app.use(function (err, req, res, next) {
     console.error(err.message);
     if (!err.statusCode) err.statusCode = 500;
-    res.status(err.statusCode).send(err.status+' '+err.message);
+    res.status(err.statusCode).send(err.statusCode+' '+err.message);
 });
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
