@@ -22,7 +22,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
             return next(error)
         } else {
             let token = usertoken.createToken(data);
-            res.json(data, token);
+            res.json({data:data, token:token});
         }
     })
 });
