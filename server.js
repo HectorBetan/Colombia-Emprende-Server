@@ -29,8 +29,9 @@ app.listen(app.get("PORT"), () => {
     console.log(`Servidor iniciado en el puerto: ${app.get("PORT")}`);
 });
 // 404 Error
-app.use((req, res, next) => {
+app.use((err, req, res, next) => {
     next(createError(404));
+    console.log(err);
 });
 app.use(function (err, req, res, next) {
     console.error(err);
