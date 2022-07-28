@@ -38,10 +38,12 @@ app.use((req, res, next) => {
 app.use(function (err, req, res, next) {
     console.error(err.message);
     if (err.message === '404') {
-        res.status(404).send("Not found");
+        res.status(404).send("Error 404: Ruta no Encontrada");
     }
-    else if (!err.statusCode) err.statusCode = 500;
-    res.status(err.statusCode).send('Error:'+ err.statusCode+' '+err.message);
+    else if (!err.statusCode) {
+        err.statusCode = 500;
+        res.status(err.statusCode).send('Error:'+ err.statusCode+' '+err.message);
+    }
 });
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
