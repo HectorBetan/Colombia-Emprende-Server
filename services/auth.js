@@ -1,11 +1,10 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config({path:"./.env"});
+const settings = require("../config/settings");
 function isAuth (req, res, next){
     if(!req.headers.authorization){
         return res.status(403).send({mensaje:"sin autorización"});
     }
-    const token =req.headers.authorization.split('')[1];
-    const payload =jwt.decode(token, CLAVE);
+    const payload =jwt.decode(token, settings.secret);
     //req.usuario = payload;
     console.log(payload);
     next();

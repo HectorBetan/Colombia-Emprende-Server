@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config({path:"./.env"});
+const settings = require("../config/settings");
 
 function createToken(user){
     const payload = {
@@ -7,7 +7,6 @@ function createToken(user){
         Uid:user.Uid,
         Email:user.tipo_usuario
     }
-    const token= process.env.CLAVE;
-    return jwt.sign(payload, token)
+    return jwt.sign(payload, settings.secret)
 }
 module.exports ={createToken}
