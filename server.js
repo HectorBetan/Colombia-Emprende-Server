@@ -36,9 +36,9 @@ app.use((req, res, next) => {
     next(createError(404));
 });
 app.use(function (err, req, res, next) {
-    console.error(err.message);
+    console.error('Error '+err.message);
     if (err.message === '404') {
-        res.status(404).send("Error 404: Ruta no Encontrada");
+        res.status(404).send(<h1 style="text-align:center">Error 404: Ruta no encontrada</h1>);
     }
     else if (!err.statusCode) {
         err.statusCode = 500;
