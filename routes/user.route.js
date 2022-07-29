@@ -26,8 +26,12 @@ router.route(`/get-user/:uid`).get((req, res) => {
     })
 });
 router.route('/update-user').put((req, res, next) => {
-    console.log(req.body.headers.auth);
-    console.log(req.body.data);
+    console.log(req.headers);
+    console.log(req.body);
+    // if(req.body.headers.authorization==null){
+    //     console.log('Error de consulta evaluaciones empresa');
+    //     return res.status(403).send({mensaje:"sin autorización"});
+    // }
     // userSchema.findOneAndUpdate(query, {
     //     $set: req.body
     // }, (error, data) => {
