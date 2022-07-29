@@ -4,12 +4,11 @@ const settings = require("../config/settings");
 function isAuth (token){
     const secret = "colombiaemprendeapp";
     const auth = token.split(' ')[1];
-    const t = token.split('.')[1]+"."+token.split('.')[2];
     if(!token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     console.log("token",auth);
-    jwt.verify(t, secret, (error, authData) => {
+    jwt.verify(auth, secret, (error, authData) => {
         if(error){
             res.sendStatus(403);
         }else{
@@ -19,7 +18,7 @@ function isAuth (token){
                 });
         }
     });
-    const payload = jwt.verify(t, secret);
+    const payload = jwt.verify(auth, secret);
     //req.usuario = payload;
     console.log(payload);
     return payload;
