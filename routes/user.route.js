@@ -33,7 +33,7 @@ router.route('/update-user').put((req, res, next) => {
     const token = req.headers.token.split(' ')[1];
     const payload = auth.isAuth(token);
     console.log("payload",payload);
-    return res.status(200).send({mensaje:"ok"});
+    res.status(200).send({mensaje:"ok"});
     // userSchema.findOneAndUpdate(query, {
     //     $set: req.body
     // }, (error, data) => {

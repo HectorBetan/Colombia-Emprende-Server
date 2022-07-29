@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+
 const settings = require("../config/settings");
 
 function createToken(user){
