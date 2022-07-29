@@ -1,5 +1,6 @@
 let mongoose = require('mongoose'),
 express = require('express');
+const jwt = require('jsonwebtoken');
 const usertoken = require("../services/token.js");
 const auth = require("../services/auth.js");
 router = express.Router();
@@ -22,7 +23,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
-            const token = jwt.sign({data}, secret)
+            const token = jwt.sign({data}, "colombiaemprendeapp");
             res.json({data:data, token:token});
         }
     })
