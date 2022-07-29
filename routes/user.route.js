@@ -1,6 +1,7 @@
 let mongoose = require('mongoose'),
 express = require('express');
 const usertoken = require("../services/token.js");
+const auth = require("../services/auth.js");
 router = express.Router();
 let userSchema = require('../models/Users');
 router.route('/create-user').post((req, res, next) => {
@@ -28,10 +29,11 @@ router.route(`/get-user/:uid`).get((req, res) => {
 router.route('/update-user').put((req, res, next) => {
     console.log(req.headers);
     console.log(req.body);
-    // if(req.body.headers.authorization==null){
-    //     console.log('Error de consulta evaluaciones empresa');
-    //     return res.status(403).send({mensaje:"sin autorización"});
-    // }
+    if(req.headers.authorization==null){
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    const token = req.headers.token;
+    auth.isAuth(token)
     // userSchema.findOneAndUpdate(query, {
     //     $set: req.body
     // }, (error, data) => {
