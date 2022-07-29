@@ -31,7 +31,7 @@ router.route('/update-user').put((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const token = req.headers.token.split(' ')[1];
-    const payload = auth.isAuth(token);
+    const payload = auth.isAuth(req.headers.token);
     console.log("payload",payload);
     res.status(200).send({mensaje:"ok"});
     // userSchema.findOneAndUpdate(query, {
