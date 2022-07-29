@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const decode = require('jwt-decode');
 const settings = require("../config/settings");
 function isAuth (token){
     const secret = "colombiaemprendeapp";
@@ -7,10 +6,7 @@ function isAuth (token){
     if(!token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
-    console.log("token",auth);
     const payload = jwt.verify(auth, secret);
-    //req.usuario = payload;
-    console.log(payload);
     return payload;
 }
 module.exports = {isAuth}

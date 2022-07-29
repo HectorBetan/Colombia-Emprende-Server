@@ -1,7 +1,6 @@
 let mongoose = require('mongoose'),
 express = require('express');
 const jwt = require('jsonwebtoken');
-const usertoken = require("../services/token.js");
 const auth = require("../services/auth.js");
 router = express.Router();
 let userSchema = require('../models/Users');
@@ -32,19 +31,16 @@ router.route('/update-user').put((req, res, next) => {
     if(req.headers.token==null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
-    const token = req.headers.token.split(' ')[1];
     const payload = auth.isAuth(req.headers.token);
-    console.log("payload",payload);
-    res.status(200).send({mensaje:"ok"});
-    // userSchema.findOneAndUpdate(query, {
-    //     $set: req.body
-    // }, (error, data) => {
-    //     if (error) {
-    //         return next(error);
-    //         console.log(error)
-    //     } else {
-    //         res.json(data)
-    //     }
-    // })
+    userSchema.findByIdAndUpdate( payload.data._id {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+            console.log(error)
+        } else {
+            res.json(data)
+        }
+    })
 })
 module.exports = router;
