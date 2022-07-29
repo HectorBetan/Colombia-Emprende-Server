@@ -40,8 +40,8 @@ router.route('/update-user').put((req, res, next) => {
             return next(error);
             console.log(error)
         } else {
-            console.log(data)
-            return res.json(data)
+            console.log('data',data)
+            res.json(data)
         }
     })
 })
