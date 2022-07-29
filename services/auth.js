@@ -8,16 +8,6 @@ function isAuth (token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     console.log("token",auth);
-    jwt.verify(auth, secret, (error, authData) => {
-        if(error){
-            res.sendStatus(403);
-        }else{
-            console.log({
-                    mensaje: "Post fue creado",
-                    authData
-                });
-        }
-    });
     const payload = jwt.verify(auth, secret);
     //req.usuario = payload;
     console.log(payload);
