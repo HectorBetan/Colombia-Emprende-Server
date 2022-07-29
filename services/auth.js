@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const decode = require('jwt-decode');
 const settings = require("../config/settings");
 function isAuth (token){
-    const auth = req.headers.token.split(' ')[1];
+    const auth = token.split(' ')[1];
     if(!token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
