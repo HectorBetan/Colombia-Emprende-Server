@@ -28,6 +28,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
     })
 });
 router.route('/update-user').put((req, res, next) => {
+    console.log(req.body);
     if(req.headers.token==null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
@@ -39,6 +40,7 @@ router.route('/update-user').put((req, res, next) => {
             return next(error);
             console.log(error)
         } else {
+            console.log(data)
             res.json(data)
         }
     })
