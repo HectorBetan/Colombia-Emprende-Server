@@ -4,7 +4,7 @@ const settings = require("../config/settings");
 function isAuth (token){
     const secret = "colombiaemprendeapp";
     const auth = token.split(' ')[1];
-    const t = token.split('.')[1];
+    const t = token.split('.')[1]+"."+token.split('.')[2];
     if(!token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
