@@ -22,7 +22,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
-            let token = usertoken.createToken(data);
+            const token = jwt.sign({data}, secret)
             res.json({data:data, token:token});
         }
     })
