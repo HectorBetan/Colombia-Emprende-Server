@@ -35,8 +35,8 @@ router.route('/update-user').put((req, res, next) => {
     console.log('payload');
     console.log(payload.data);
     console.log('payloaddataid');
-    console.log(payload.data._id);
-    userSchema.findByIdAndUpdate(payload.data._id, {
+    console.log(payload.data[0]._id);
+    userSchema.findByIdAndUpdate(payload.data[0]._id, {
         $set: req.body
     }, (error, data) => {
         if (error) {
