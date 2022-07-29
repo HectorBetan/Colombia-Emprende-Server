@@ -27,13 +27,13 @@ router.route(`/get-user/:uid`).get((req, res) => {
     })
 });
 router.route('/update-user').put((req, res, next) => {
-    console.log(req.headers);
     console.log(req.body);
-    if(req.headers.authorization==null){
+    if(req.headers.token==null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const token = req.headers.token;
     auth.isAuth(token)
+    return res.status(200).send({mensaje:"ok"});
     // userSchema.findOneAndUpdate(query, {
     //     $set: req.body
     // }, (error, data) => {
