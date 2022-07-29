@@ -10,7 +10,7 @@ async function createToken(user){
         Email:user.tipo_usuario
     }
     
-    const token = jwt.sign(payload, secret)
+    const token = jwt.sign({payload}, secret)
     return token;
 }
 module.exports ={createToken}
