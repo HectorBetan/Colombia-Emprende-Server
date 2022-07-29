@@ -8,4 +8,4 @@ function isAuth (token){
     //req.usuario = payload;
     console.log(payload);
 }
-module.exports = isAuth
+module.exports = {isAuth}
