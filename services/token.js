@@ -9,6 +9,6 @@ async function createToken(user){
         Uid:user.Uid,
         Email:user.tipo_usuario
     }
-    return jwt.sign({payload}, secret)
+    return jwt.sign({payload}, secret,)
 }
 module.exports ={createToken}
