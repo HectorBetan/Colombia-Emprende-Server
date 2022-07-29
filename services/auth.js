@@ -9,6 +9,7 @@ function isAuth (token){
     const payload = jwt.decode(token, settings.secret);
     //req.usuario = payload;
     console.log(payload);
+    console.log(payload.payload);
     return payload;
 }
 module.exports = {isAuth}
