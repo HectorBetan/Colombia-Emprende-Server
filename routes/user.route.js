@@ -25,4 +25,18 @@ router.route(`/get-user/:uid`).get((req, res) => {
         }
     })
 });
+router.route('/update-user').put((req, res, next) => {
+    console.log(req.body.headers.auth);
+    console.log(req.body.data);
+    // userSchema.findOneAndUpdate(query, {
+    //     $set: req.body
+    // }, (error, data) => {
+    //     if (error) {
+    //         return next(error);
+    //         console.log(error)
+    //     } else {
+    //         res.json(data)
+    //     }
+    // })
+})
 module.exports = router;
