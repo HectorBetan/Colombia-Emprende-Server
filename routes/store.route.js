@@ -3,7 +3,7 @@ express = require('express');
 const jwt = require('jsonwebtoken');
 const auth = require("../services/auth.js");
 router = express.Router();
-let storeSchema = require('../models/Store');
+let storeSchema = require('../models/Stores');
 router.route('/create-store').post((req, res, next) => {
     if(req.headers.token === null){
         return res.status(403).send({mensaje:"sin autorización"});
