@@ -28,7 +28,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
     })
 });
 router.route('/update-user').put((req, res, next) => {
-    if(req.headers.token==null){
+    if(req.headers.token===null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
@@ -41,6 +41,21 @@ router.route('/update-user').put((req, res, next) => {
         } else {
             console.log('data',data)
             res.json(data)
+        }
+    })
+})
+router.route('/delete-user/:id').delete((req, res, next) => {
+    if(req.headers.token===null){
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    const payload = auth.isAuth(req.headers.token);
+    userSchema.findByIdAndRemove(payload._id, (error, data) =>{
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+            msg: data
+        })
         }
     })
 })
