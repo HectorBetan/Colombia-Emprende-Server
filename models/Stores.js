@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let storeSchema = new Schema({
-    Key: {
+    User_id: {
         type: String,
     },
     Nombre: {
@@ -41,7 +41,9 @@ let storeSchema = new Schema({
     Categoria: {
         type: String
     },
-    
+    Calificacion: {
+        type: Array
+    }
 }, {
  collection: 'emprendimientos'
  })
