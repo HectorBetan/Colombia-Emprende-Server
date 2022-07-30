@@ -7,6 +7,6 @@ function isAuth (token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = jwt.verify(auth, secret);
-    return payload;
+    return payload.data[0];
 }
 module.exports = {isAuth}
