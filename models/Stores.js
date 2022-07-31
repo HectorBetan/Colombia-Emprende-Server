@@ -43,6 +43,9 @@ let storeSchema = new Schema({
     },
     Calificacion: {
         type: Array
+    },
+    Path: {
+        type: String
     }
 }, {
  collection: 'emprendimientos'

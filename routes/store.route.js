@@ -34,7 +34,11 @@ router.route('/create-store').post((req, res, next) => {
     })
 });
 router.route(`/get-store/:uid`).get((req, res) => {
-    const query = {Uid: req.params.uid};
+    if(!req.headers.token){
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    const payload = auth.isAuth(req.headers.token);
+    const query = {User_id: payload._id};
     storeSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
@@ -49,7 +53,7 @@ router.route('/update-store').put((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    userSchema.findByIdAndUpdate(payload._id, {
+    storeSchema.findByIdAndUpdate(payload._id, {
         $set: req.body
     }, (error, data) => {
         if (error) {
