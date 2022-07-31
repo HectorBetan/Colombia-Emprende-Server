@@ -37,6 +37,7 @@ router.route('/update-user').put((req, res, next) => {
         $set: req.body
     }, (error, data) => {
         if (error) {
+            console.log(error);
             return next(error);
         } else {
             const token = jwt.sign({data}, settings.secret);
