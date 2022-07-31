@@ -23,6 +23,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
+            console.log(settings.secret);
             const token = jwt.sign({data}, settings.secret);
             res.json({data:data, token:token});
         }
@@ -40,6 +41,7 @@ router.route('/update-user').put((req, res, next) => {
             console.log(error);
             return next(error);
         } else {
+            console.log(settings.secret);
             const token = jwt.sign({data}, settings.secret);
             res.json({data:data, token:token});
         }
