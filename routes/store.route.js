@@ -33,7 +33,7 @@ router.route('/create-store').post((req, res, next) => {
         }
     })
 });
-router.route(`/get-store/:uid`).get((req, res) => {
+router.route(`/get-store`).get((req, res) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
@@ -53,7 +53,7 @@ router.route('/update-store').put((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    storeSchema.findByIdAndUpdate(payload._id, {
+    storeSchema.findByIdAndUpdate(payload.Emprendimiento_id, {
         $set: req.body
     }, (error, data) => {
         if (error) {

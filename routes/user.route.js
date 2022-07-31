@@ -2,6 +2,7 @@ let mongoose = require('mongoose'),
 express = require('express');
 const jwt = require('jsonwebtoken');
 const auth = require("../services/auth.js");
+const settings = require('../config/settings.js');
 router = express.Router();
 let userSchema = require('../models/Users');
 router.route('/create-user').post((req, res, next) => {
@@ -22,7 +23,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
-            const token = jwt.sign({data}, "colombiaemprendeapp");
+            const token = jwt.sign({data}, settings.secret);
             res.json({data:data, token:token});
         }
     })
@@ -37,10 +38,9 @@ router.route('/update-user').put((req, res, next) => {
     }, (error, data) => {
         if (error) {
             return next(error);
-            console.log(error)
         } else {
-            console.log('data',data)
-            res.json(data)
+            const token = jwt.sign({data}, settings.secret);
+            res.json({data:data, token:token});
         }
     })
 })
