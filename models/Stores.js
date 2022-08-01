@@ -5,43 +5,43 @@ let storeSchema = new Schema({
         type: String,
     },
     Nombre: {
-        type: String
+        type: String,
     },
     Email: {
-        type: String
+        type: String,
     },
     Celular: {
-        type: Number
+        type: Number,
     },
     Telefono: {
-        type: Number
+        type: Number,
     },
     Direccion: {
-        type: String
+        type: String,
     },
     Descripcion: {
-        type: String
+        type: String,
     },
     Imagen: {
-        type: String
+        type: String,
     },
     Facebook: {
-        type: String
+        type: String,
     },
     Instagram: {
-        type: String
+        type: String,
     },
     Web: {
-        type: String
+        type: String,
     },
     Ciudad: {
-        type: String
+        type: String,
     },
     Categoria: {
-        type: String
+        type: String,
     },
     Calificacion: {
-        type: Array
+        type: Array,
     },
     Path: {
         type: String,
