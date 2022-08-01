@@ -55,6 +55,7 @@ router.route(`/find-store-path/:path`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
+            console.log(data);
             res.json(data);
         }
     })
