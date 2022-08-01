@@ -24,6 +24,7 @@ router.route('/create-store').post((req, res, next) => {
         Ciudad: req.body.Ciudad,
         Categoria: req.body.Categoria,
         Calificacion: req.body.Calificacion,
+        Path: req.body.Path,
     }
     storeSchema.create(store, (error, data) => {
         if (error) {
@@ -43,8 +44,21 @@ router.route(`/get-store`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
-            const token = jwt.sign({data}, "colombiaemprendeapp");
             res.json({data:data, token:token});
+        }
+    })
+});
+router.route(`/find-store-path/:path`).get((req, res) => {
+    if(!req.headers.token){
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    const query = {Path: req.params.path};
+    storeSchema.find(query,(error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            console.log(data);
+            res.json({data});
         }
     })
 });
