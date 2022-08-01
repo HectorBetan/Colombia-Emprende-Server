@@ -6,6 +6,7 @@ let storeSchema = new Schema({
     },
     Nombre: {
         type: String,
+        unique: false
     },
     Email: {
         type: String,
