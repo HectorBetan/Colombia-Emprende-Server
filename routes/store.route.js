@@ -49,9 +49,6 @@ router.route(`/get-store`).get((req, res) => {
     })
 });
 router.route(`/find-store-path/:path`).get((req, res) => {
-    if(!req.headers.token){
-        return res.status(403).send({mensaje:"sin autorización"});
-    }
     const query = {Path: req.params.path};
     storeSchema.find(query,(error, data) => {
         if (error) {
