@@ -9,6 +9,7 @@ router.route('/create-store').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
+    console.log(req.body);
     const store = {
         User_id: payload._id,
         Nombre: req.body.Nombre,
