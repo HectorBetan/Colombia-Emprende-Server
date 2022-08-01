@@ -54,11 +54,7 @@ router.route(`/find-store-path/:path`).get((req, res) => {
         if (error) {
             return next(error)
         } else {
-            console.log("path",data[0].Path);
-            if(data[0].Path){
-                res.json(true);
-            }
-            res.json(false);
+            res.json(data);
         }
     })
 });
