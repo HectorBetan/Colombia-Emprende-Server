@@ -50,8 +50,9 @@ router.route(`/get-store`).get((req, res) => {
     })
 });
 router.route(`/find-store-path/:path`).get((req, res) => {
+    console.log(req.params.path);
     const query = {Path: req.params.path};
-    storeSchema.find(query,(error, data) => {
+    storeSchema.findByOne(query,(error, data) => {
         if (error) {
             return next(error)
         } else {
