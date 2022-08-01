@@ -44,7 +44,8 @@ let storeSchema = new Schema({
         type: Array
     },
     Path: {
-        type: String
+        type: String,
+        unique: true
     }
 }, {
  collection: 'emprendimientos'
