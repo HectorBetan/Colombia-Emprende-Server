@@ -47,7 +47,7 @@ router.route(`/get-store`).get((req, res) => {
             console.log(error);
             return next(error)
         } else {
-            res.json({data:data, token:token});
+            res.json(data);
         }
     })
 });
@@ -78,12 +78,12 @@ router.route('/update-store').put((req, res, next) => {
         }
     })
 })
-router.route('/delete-user/:id').delete((req, res, next) => {
+router.route('/delete-store').delete((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    userSchema.findByIdAndRemove(payload._id, (error, data) =>{
+    userSchema.findByIdAndRemove(payload.Emprendimiento_id, (error, data) =>{
         if (error) {
             return next(error);
         } else {
