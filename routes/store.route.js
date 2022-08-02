@@ -79,7 +79,7 @@ router.route('/delete-store').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    userSchema.findByIdAndRemove(payload.Emprendimiento_id, (error, data) =>{
+    storeSchema.findByIdAndRemove(payload.Emprendimiento_id, (error, data) =>{
         if (error) {
             return next(error);
         } else {
