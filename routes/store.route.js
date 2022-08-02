@@ -62,15 +62,14 @@ router.route('/update-store').put((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
-    console.log(req.body);
     const payload = auth.isAuth(req.headers.token);
-    console.log(payload);
     storeSchema.findByIdAndUpdate(payload.Emprendimiento_id, {
         $set: req.body
     }, (error, data) => {
         if (error) {
             return next(error);
         } else {
+            console.log(data);
             res.json(data)
         }
     })
