@@ -9,7 +9,6 @@ router.route('/create-store').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    console.log(req.body);
     const store = {
         User_id: payload._id,
         Nombre: req.body.Nombre,
@@ -29,7 +28,6 @@ router.route('/create-store').post((req, res, next) => {
     }
     storeSchema.create(store, (error, data) => {
         if (error) {
-            console.log(error);
             return next(error)
         } else {
             res.json(data)
@@ -37,7 +35,6 @@ router.route('/create-store').post((req, res, next) => {
     })
 });
 router.route(`/get-store`).post((req, res) => {
-    console.log(req.headers);
     if(req.headers.token === null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
@@ -45,7 +42,6 @@ router.route(`/get-store`).post((req, res) => {
     const query = {User_id: payload._id};
     storeSchema.find(query,(error, data) => {
         if (error) {
-            console.log(error);
             return next(error)
         } else {
             res.json(data);
@@ -72,9 +68,7 @@ router.route('/update-store').put((req, res, next) => {
     }, (error, data) => {
         if (error) {
             return next(error);
-            console.log(error)
         } else {
-            console.log('data',data)
             res.json(data)
         }
     })
