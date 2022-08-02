@@ -2,7 +2,7 @@ let mongoose = require('mongoose'),
 express = require('express'),
 router = express.Router();
 const auth = require("../services/auth.js");
-let productSchema = require('../Models/Products');
+let productSchema = require('../models/Products');
 router.route('/create-product').post((req, res, next) => {
     if(req.headers.token === null){
         return res.status(403).send({mensaje:"sin autorización"});
