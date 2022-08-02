@@ -19,6 +19,7 @@ router.route('/create-product').post((req, res, next) => {
     
     productSchema.create(product, (error, data) => {
         if (error) {
+            console.log(error);
             return next(error)
         } else {
             res.json(data)
