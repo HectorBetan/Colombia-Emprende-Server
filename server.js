@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use('/users', userRoute )
 app.use('/stores', storeRoute )
-app.use('/products', storeRoute )
+app.use('/products', productRoute )
 // PORT
 app.set("PORT", process.env.PORT || 4000);
 app.listen(app.get("PORT"), () => {
