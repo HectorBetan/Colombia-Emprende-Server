@@ -37,7 +37,8 @@ router.route('/create-store').post((req, res, next) => {
     })
 });
 router.route(`/get-store`).get((req, res) => {
-    if(!req.headers.token){
+    console.log(req.headers);
+    if(req.headers.token === null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
