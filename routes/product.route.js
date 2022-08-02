@@ -7,7 +7,7 @@ router.route('/create-product').post((req, res, next) => {
     if(req.headers.token === null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
-    const payload = auth.isAuth(req.headers.token);W
+    const payload = auth.isAuth(req.headers.token);
     const product = {
         Nombre: req.body.Nombre,
         Precio: req.body.Precio,
