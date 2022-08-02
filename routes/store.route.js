@@ -74,7 +74,7 @@ router.route('/update-store').put((req, res, next) => {
         }
     })
 })
-router.route('/delete-store').delete((req, res, next) => {
+router.route('/delete-store').post((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
