@@ -13,9 +13,6 @@ let productSchema = new Schema({
     Imagen: {
         type: String
     },
-    Emprendimiento_id: {
-        type: String
-    },
     User_id: {
         type: String
     },

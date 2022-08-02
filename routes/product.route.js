@@ -4,7 +4,6 @@ router = express.Router();
 const auth = require("../services/auth.js");
 let productSchema = require('../models/Products');
 router.route('/create-product').post((req, res, next) => {
-    console.log(req.body);
     if(req.headers.token === null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
@@ -17,14 +16,26 @@ router.route('/create-product').post((req, res, next) => {
         Emprendimiento_id: req.body.Emprendimiento_id,
         User_id: payload._id,
     }
-    console.log(product);
     productSchema.create(product, (error, data) => {
         if (error) {
-            console.log(error);
             return next(error)
         } else {
             res.json(data)
         }
     })
 });
+router.route('/get-store-products').post((req, res, next) => {
+    if(req.headers.token === null){
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    const payload = auth.isAuth(req.headers.token);
+    const query = { User_id: {$in:payload._id} };
+    productoSchema.find( query, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
+})
 module.exports = router;
