@@ -38,4 +38,18 @@ router.route('/get-store-products').post((req, res, next) => {
         }
     })
 })
+router.route('/get-store-products-size').post((req, res, next) => {
+    if(req.headers.token === null){
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    const payload = auth.isAuth(req.headers.token);
+    const query = { User_id: {$in:payload._id} };
+    productSchema.find( query, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    }).size();
+})
 module.exports = router;
