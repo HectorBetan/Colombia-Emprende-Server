@@ -38,13 +38,15 @@ router.route('/get-store-products').post((req, res, next) => {
         }
     })
 })
-router.route('/update-product').put((req, res, next) => {
+router.route('/update-product/:id').put((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    const query = {_id: {$in: payload.Emprendimiento_id}, User_id: payload._id};
-    productSchema.findOneAndUpdate(query, {
+    if (payload._id !== req.body.User_id) {
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    productSchema.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, (error, data) => {
         if (error) {
@@ -60,9 +62,10 @@ router.route('/delete-product/:id').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    const query = {_id: {$in:req.params.id}, User_id: {$in:payload._id}};
-    console.log(query);
-    productSchema.findOneAndRemove(query, (error, data) =>{
+    if (payload._id !== req.body.User_id) {
+        return res.status(403).send({mensaje:"sin autorización"});
+    }
+    productSchema.findByIdAndRemove(req.params.id, (error, data) =>{
         if (error) {
             return next(error);
         } else {
