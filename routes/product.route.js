@@ -55,12 +55,12 @@ router.route('/update-product').put((req, res, next) => {
         }
     })
 })
-router.route('/delete-product').post((req, res, next) => {
+router.route('/delete-product/:id').post((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    const query = {_id: req.body, User_id: payload._id};
+    const query = {_id: req.params.id, User_id: payload._id};
     console.log(query);
     productSchema.findOneAndDelete(query, (error, data) =>{
         if (error) {
