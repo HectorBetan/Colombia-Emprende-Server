@@ -44,7 +44,7 @@ router.route('/update-product').put((req, res, next) => {
     }
     const payload = auth.isAuth(req.headers.token);
     const query = {_id: {$in: payload.Emprendimiento_id}, User_id: payload._id};
-    productSchema.updateOne(query, {
+    productSchema.findOneAndUpdate(query, {
         $set: req.body
     }, (error, data) => {
         if (error) {
@@ -62,7 +62,7 @@ router.route('/delete-product').post((req, res, next) => {
     const payload = auth.isAuth(req.headers.token);
     const query = {_id: req.body, User_id: payload._id};
     console.log(query);
-    productSchema.deleteOne(query, (error, data) =>{
+    productSchema.findOneAndDelete(query, (error, data) =>{
         if (error) {
             return next(error);
         } else {
