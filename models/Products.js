@@ -13,6 +13,9 @@ let productSchema = new Schema({
     Imagen: {
         type: String
     },
+    ImgRoute: {
+        type: String
+    },
     User_id: {
         type: String
     },
