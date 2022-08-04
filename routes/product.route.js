@@ -62,7 +62,7 @@ router.route('/delete-product/:id').post((req, res, next) => {
     const payload = auth.isAuth(req.headers.token);
     const query = {_id: req.params.id, User_id: payload._id};
     console.log(query);
-    productSchema.findOneAndDelete(query, (error, data) =>{
+    productSchema.findOneAndRemove(query, (error, data) =>{
         if (error) {
             return next(error);
         } else {
