@@ -5,6 +5,7 @@ let cors = require('cors');
 let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
 // Express Route
+const publicRoute = require('./routes/public.route')
 const userRoute = require('./routes/user.route')
 const storeRoute = require('./routes/store.route')
 const productRoute = require('./routes/product.route')
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({
  extended: true
 }));
 app.use(cors());
+app.use('/', publicRoute )
 app.use('/users', userRoute )
 app.use('/stores', storeRoute )
 app.use('/products', productRoute )
