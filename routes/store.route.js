@@ -62,8 +62,7 @@ router.route('/update-store').put((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    const query = {_id: {$in: req.body._id}, User_id: payload._id};
-    storeSchema.updateOne(query, {
+    storeSchema.findByIdAndUpdate(payload.Emprendimiento_id, {
         $set: req.body
     }, (error, data) => {
         if (error) {
@@ -79,8 +78,7 @@ router.route('/delete-store').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    const query = {_id: {$in: req.body._id}, User_id: payload._id};
-    storeSchema.deleteOne(query, (error, data) =>{
+    storeSchema.findByIdAndRemove(payload.Emprendimiento_id, (error, data) =>{
         if (error) {
             return next(error);
         } else {
