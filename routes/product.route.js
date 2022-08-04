@@ -61,6 +61,7 @@ router.route('/delete-product').post((req, res, next) => {
     }
     const payload = auth.isAuth(req.headers.token);
     const query = {_id: req.body, User_id: payload._id};
+    console.log(query);
     productSchema.deleteOne(query, (error, data) =>{
         if (error) {
             return next(error);
