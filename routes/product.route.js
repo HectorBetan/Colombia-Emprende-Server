@@ -60,7 +60,7 @@ router.route('/delete-product/:id').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    const query = {_id: req.params.id, User_id: payload._id};
+    const query = {_id: {$in:req.params.id}, User_id: {$in:payload._id}};
     console.log(query);
     productSchema.findOneAndRemove(query, (error, data) =>{
         if (error) {
