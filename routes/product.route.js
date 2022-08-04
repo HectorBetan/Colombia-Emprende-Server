@@ -62,6 +62,7 @@ router.route('/delete-product/:id').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
+    console.log(req.body);
     if (payload._id !== req.body.User_id) {
         return res.status(403).send({mensaje:"sin autorización"});
     }
