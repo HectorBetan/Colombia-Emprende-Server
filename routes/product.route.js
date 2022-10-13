@@ -13,7 +13,7 @@ router.route('/create-product').post((req, res, next) => {
         Precio: req.body.Precio,
         Descripcion: req.body.Descripcion,
         Imagen: req.body.Imagen,
-        Emprendimiento_id: req.body.Emprendimiento_id,
+        Emprendimiento_id: payload.Emprendimiento_id,
         User_id: payload._id,
     }
     productSchema.create(product, (error, data) => {

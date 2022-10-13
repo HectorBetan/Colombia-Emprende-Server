@@ -19,6 +19,9 @@ let productSchema = new Schema({
     User_id: {
         type: String
     },
+    Emprendimiento_id:{
+        type: String
+    },
 },
 {
     collection: 'productos'
