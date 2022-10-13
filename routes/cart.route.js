@@ -21,7 +21,7 @@ router.route('/create-cart').post((req, res, next) => {
     }
     })
    });
-   router.route('/get-carrito/:id').get((req, res, next) => {
+   router.route('/get-cart/:id').get((req, res, next) => {
     const query = {UserEmail: req.params.id, Estado: "Carrito"}
     cartSchema.find( query, (error, data) => {
     if (error) {
@@ -75,7 +75,7 @@ router.route('/create-cart').post((req, res, next) => {
     })
    })
    // Update Producto
-   router.route('/update-carrito/:id').put((req, res, next) => {
+   router.route('/update-cart/:id').put((req, res, next) => {
     cartSchema.findByIdAndUpdate(req.params.id, {
     $set: req.body
     }, (error, data) => {
@@ -88,7 +88,7 @@ router.route('/create-cart').post((req, res, next) => {
     })
    })
    // Definir Por Id
-   router.route('/update-carritos').put((req, res, next) => {
+   router.route('/update-carts').put((req, res, next) => {
     const query = {_id: {$in:req.body.id}}
     cartSchema.updateMany(query, {
     $set: req.body.Estado
@@ -114,7 +114,7 @@ router.route('/create-cart').post((req, res, next) => {
     })
    })
    // Delete Producto
-   router.route('/delete-carrito/:id').delete((req, res, next) => {
+   router.route('/delete-cart/:id').delete((req, res, next) => {
     cartSchema.findByIdAndRemove(req.params.id, (error, data) =>
    {
     if (error) {
@@ -126,8 +126,7 @@ router.route('/create-cart').post((req, res, next) => {
     }
     })
    })
-   router.route('/delete-carritos').post((req, res, next) => {
-    console.log("delete-carritos",req.body)
+   router.route('/delete-carts').post((req, res, next) => {
     const query = {_id: {$in:req.body.id}}
     cartSchema.deleteMany(query, (error, data) =>
    {
