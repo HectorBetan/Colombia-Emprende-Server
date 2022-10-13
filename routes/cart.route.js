@@ -2,7 +2,7 @@ let mongoose = require('mongoose'),
  express = require('express'),
  router = express.Router();
 // Producto Model
-let cartSchema = require('../Models/Cart');
+let cartSchema = require('../models/Cart');
 
 // CREATE Producto
 router.route('/create-cart').post((req, res, next) => {
