@@ -11,7 +11,6 @@ const storeRoute = require('./routes/store.route')
 const productRoute = require('./routes/product.route')
 const cartRoute = require('./routes/cart.route')
 const pricingRoute = require('./routes/pricing.route')
-const orderRoute = require('./routes/order.route')
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
