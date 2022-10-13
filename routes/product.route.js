@@ -14,7 +14,6 @@ router.route('/create-product').post((req, res, next) => {
         Descripcion: req.body.Descripcion,
         Imagen: req.body.Imagen,
         Emprendimiento_id: payload.Emprendimiento_id,
-        User_id: payload._id,
     }
     productSchema.create(product, (error, data) => {
         if (error) {
@@ -74,6 +73,16 @@ router.route('/delete-product/:id').post((req, res, next) => {
             msg: data
         })
         }
+    })
+})
+router.route('/get-cart-products').post((req, res, next) => {
+    const query = { _id: {$in: req.body} };
+    productSchema.find( query, (error, data) => {
+    if (error) {
+    return next(error)
+    } else {
+        res.json(data)
+    }
     })
 })
 module.exports = router;
