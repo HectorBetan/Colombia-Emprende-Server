@@ -35,7 +35,7 @@ app.use('/stores', storeRoute )
 app.use('/products', productRoute )
 app.use('/cart', cartRoute )
 app.use('/pricing', pricingRoute )
-app.use('/order', orderRoute )
+
 // PORT
 app.set("PORT", process.env.PORT || 4000);
 app.listen(app.get("PORT"), () => {
