@@ -17,7 +17,7 @@ router.route('/create-pricing').post((req, res, next) => {
     })
    });
    // Get Single Producto
-router.route('/get-cotizacion/:id').get((req, res, next) => {
+router.route('/get-pricing/:id').get((req, res, next) => {
     const query = {User_id: req.params.id};
     pricingSchema.find( query, (error, data) => {
     if (error) {
@@ -27,7 +27,7 @@ router.route('/get-cotizacion/:id').get((req, res, next) => {
     res.json(data)
     }
     })
-   })
+})
    router.route('/get-product/:id').get((req, res, next) => {
     pricingSchema.findById(req.params.id, (error, data) => {
     if (error) {

@@ -75,7 +75,7 @@ router.route('/delete-product/:id').post((req, res, next) => {
         }
     })
 })
-router.route('/get-cart-products').post((req, res, next) => {
+router.route('/get-products').post((req, res, next) => {
     const query = { _id: {$in: req.body} };
     productSchema.find( query, (error, data) => {
     if (error) {

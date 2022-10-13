@@ -88,7 +88,7 @@ router.route('/delete-store').post((req, res, next) => {
         }
     })
 })
-router.route('/get-cart-stores').post((req, res, next) => {
+router.route('/get-stores').post((req, res, next) => {
     const query = { _id: {$in: req.body} };
     storeSchema.find( query, (error, data) => {
     if (error) {
