@@ -10,6 +10,8 @@ const userRoute = require('./routes/user.route')
 const storeRoute = require('./routes/store.route')
 const productRoute = require('./routes/product.route')
 const cartRoute = require('./routes/cart.route')
+const pricingRoute = require('./routes/pricing.route')
+const orderRoute = require('./routes/order.route')
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
@@ -32,6 +34,8 @@ app.use('/users', userRoute )
 app.use('/stores', storeRoute )
 app.use('/products', productRoute )
 app.use('/cart', cartRoute )
+app.use('/pricing', pricingRoute )
+app.use('/order', orderRoute )
 // PORT
 app.set("PORT", process.env.PORT || 4000);
 app.listen(app.get("PORT"), () => {
