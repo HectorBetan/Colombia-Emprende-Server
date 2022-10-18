@@ -24,7 +24,8 @@ router.route('/create-product').post((req, res, next) => {
     })
 });
 router.route('/get-store-products').post((req, res, next) => {
-    const query = { User_id: req.body._id };
+    
+    const query = { User_id: req.body.id };
     productSchema.find( query, (error, data) => {
         if (error) {
             return next(error)
