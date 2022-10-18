@@ -28,6 +28,17 @@ router.route('/get-pricing/:id').get((req, res, next) => {
     }
     })
 })
+router.route('/get-store-pricing/:id').get((req, res, next) => {
+    const query = {Emprendimiento_id: req.params.id};
+    pricingSchema.find( query, (error, data) => {
+    if (error) {
+    return next(error)
+    } else {
+        console.log(data)
+    res.json(data)
+    }
+    })
+})
    router.route('/get-product/:id').get((req, res, next) => {
     pricingSchema.findById(req.params.id, (error, data) => {
     if (error) {
