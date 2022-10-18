@@ -28,8 +28,8 @@ router.route(`/get-user/:uid`).get((req, res) => {
         }
     })
 });
-router.route(`/get-user-info/:id`).get((req, res) => {
-    const query = {_id: {$in:req.params.id}};
+router.route(`/get-user-info/:id`).post((req, res, next) => {
+    const query = {_id: {$in:req.body}};
     userSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
