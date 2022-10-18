@@ -34,6 +34,8 @@ router.route('/get-store-products').post((req, res, next) => {
         if (error) {
             return next(error)
         } else {
+            console.log("aqui va la data bla bla bla")
+            console.log(data)
             res.json(data)
         }
     })
