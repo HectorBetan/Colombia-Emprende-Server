@@ -29,7 +29,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
     })
 });
 router.route(`/get-user-info/:id`).get((req, res) => {
-    const query = {_id: {$in:req.params.id};
+    const query = {_id: {$in:req.params.id}};
     userSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
