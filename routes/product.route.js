@@ -29,7 +29,7 @@ router.route('/get-store-products').post((req, res, next) => {
     }
     const payload = auth.isAuth(req.headers.token);
     console.log(payload)
-    const query = { User_id: {$in:payload._id} };
+    const query = { User_id: payload._id };
     productSchema.find( query, (error, data) => {
         if (error) {
             return next(error)
