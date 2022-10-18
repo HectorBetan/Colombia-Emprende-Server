@@ -28,6 +28,7 @@ router.route('/get-store-products').post((req, res, next) => {
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
+    console.log(payload)
     const query = { User_id: {$in:payload._id} };
     productSchema.find( query, (error, data) => {
         if (error) {
