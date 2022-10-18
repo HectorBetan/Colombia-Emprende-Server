@@ -28,6 +28,16 @@ router.route(`/get-user/:uid`).get((req, res) => {
         }
     })
 });
+router.route(`/get-user-info/:id`).get((req, res) => {
+    const query = {_id: req.params.id};
+    userSchema.find(query,(error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data);
+        }
+    })
+});
 router.route('/update-user').put((req, res, next) => {
     if(req.headers.token===null){
         return res.status(403).send({mensaje:"sin autorización"});
