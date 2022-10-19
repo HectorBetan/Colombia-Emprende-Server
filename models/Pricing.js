@@ -31,11 +31,17 @@ let pricingSchema = new Schema({
     Estado:{
         type: String
     },
-    Etapa:{
+    Pago:{
+        type: Boolean
+    },
+    Info_Pago:{
         type: String
     },
     Fecha_Envio:{
         type: String
+    },
+    Numero_Guia: {
+        type:String
     },
     },
     {
