@@ -11,7 +11,6 @@ router.route('/create-cart').post((req, res, next) => {
         Emprendimiento_id: req.body.Emprendimiento_id,
         Producto_id: req.body.Producto_id,
         Cantidad: req.body.Cantidad,
-        Estado: "carrito"
     }
     cartSchema.create(cart, (error, data) => {
     if (error) {
@@ -22,7 +21,7 @@ router.route('/create-cart').post((req, res, next) => {
     })
    });
    router.route('/get-cart/:id').get((req, res, next) => {
-    const query = {User_id: req.params.id, Estado: "carrito"}
+    const query = {User_id: req.params.id}
     cartSchema.find( query, (error, data) => {
     if (error) {
     return next(error)

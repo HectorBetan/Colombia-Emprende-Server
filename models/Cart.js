@@ -13,9 +13,6 @@ let cartSchema = new Schema({
     Cantidad: {
         type: Number
     },
-    Estado: {
-        type: String
-    }  
     },
     {
         collection: 'cart'
