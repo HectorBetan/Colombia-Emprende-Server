@@ -74,7 +74,7 @@ router.route('/get-store-pricing/:id').get((req, res, next) => {
     }
     pricingSchema.findByIdAndUpdate(req.params.id, {
         
-    $set: req.body
+    $set: pricing
     }, (error, data) => {
     if (error) {
     return next(error);
