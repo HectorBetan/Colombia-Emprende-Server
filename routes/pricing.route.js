@@ -62,7 +62,7 @@ router.route('/get-store-pricing/:id').get((req, res, next) => {
     })
    })
    // Create Pedido
-   router.route('/create.order/:id').put((req, res, next) => {
+   router.route('/create-order/:id').put((req, res, next) => {
     const pricing = {
         Pago: true,
         Estado: "Pagado",
