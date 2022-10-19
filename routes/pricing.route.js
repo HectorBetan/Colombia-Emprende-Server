@@ -67,7 +67,7 @@ router.route('/get-store-pricing/:id').get((req, res, next) => {
         Pago: true,
         Estado: "Pagado",
         Info_Pago: {
-            Pago_id: new ObjectId(),
+            Id: new mongoose.Types.ObjectId(),
             Tipo_Pago: req.body.Tipo_Pago,
             Cedula: req.body.Cedula,
             Valor_Total: req.body.Valor_Total,
