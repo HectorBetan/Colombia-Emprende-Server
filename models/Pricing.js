@@ -30,7 +30,13 @@ let pricingSchema = new Schema({
     },
     Estado:{
         type: String
-    }
+    },
+    Etapa:{
+        type: String
+    },
+    Fecha_Envio:{
+        type: String
+    },
     },
     {
         collection: 'pricings'

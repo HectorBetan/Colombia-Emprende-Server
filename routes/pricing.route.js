@@ -49,7 +49,7 @@ router.route('/get-store-pricing/:id').get((req, res, next) => {
     })
    })
    // Update Producto
-   router.route('/update-cotizacion/:id').put((req, res, next) => {
+   router.route('/update-pricing/:id').put((req, res, next) => {
     pricingSchema.findByIdAndUpdate(req.params.id, {
     $set: req.body
     }, (error, data) => {
