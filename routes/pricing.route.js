@@ -61,6 +61,29 @@ router.route('/get-store-pricing/:id').get((req, res, next) => {
     }
     })
    })
+   // Create Pedido
+   router.route('/create.order/:id').put((req, res, next) => {
+    const pricing = {
+        Pago: true,
+        Estado: "Pagado",
+        Info_Pago: {
+            Tipo_Pago: req.body.Tipo_Pago,
+            Cedula: req.body.Cedula,
+            Valor_Total: req.body.Valor_Total,
+        },
+    }
+    pricingSchema.findByIdAndUpdate(req.params.id, {
+        
+    $set: req.body
+    }, (error, data) => {
+    if (error) {
+    return next(error);
+    console.log(error)
+    } else {
+    res.json(data)
+    }
+    })
+   })
    // Delete Producto
    router.route('/delete-carrito/:id').delete((req, res, next) => {
     productoSchema.findByIdAndRemove(req.params.id, (error, data) =>

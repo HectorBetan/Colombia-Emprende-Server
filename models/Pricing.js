@@ -35,7 +35,7 @@ let pricingSchema = new Schema({
         type: Boolean
     },
     Info_Pago:{
-        type: String
+        type: Object
     },
     Fecha_Envio:{
         type: String
