@@ -28,8 +28,31 @@ router.route('/get-pricing/:id').get((req, res, next) => {
     }
     })
 })
+
 router.route('/get-store-pricing/:id').get((req, res, next) => {
     const query = {Emprendimiento_id: req.params.id, Pago: false};
+    pricingSchema.find( query, (error, data) => {
+    if (error) {
+    return next(error)
+    } else {
+        console.log(data)
+    res.json(data)
+    }
+    })
+})
+router.route('/get-orders/:id').get((req, res, next) => {
+    const query = {User_id: req.params.id, Pago: true};
+    pricingSchema.find( query, (error, data) => {
+    if (error) {
+    return next(error)
+    } else {
+        console.log(data)
+    res.json(data)
+    }
+    })
+})
+router.route('/get-store-orders/:id').get((req, res, next) => {
+    const query = {Emprendimiento_id: req.params.id, Pago: true};
     pricingSchema.find( query, (error, data) => {
     if (error) {
     return next(error)
