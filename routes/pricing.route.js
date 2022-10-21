@@ -18,7 +18,7 @@ router.route('/create-pricing').post((req, res, next) => {
    });
    // Get Single Producto
 router.route('/get-pricing/:id').get((req, res, next) => {
-    const query = {User_id: req.params.id, Pago: false, Estado:{$not:"rechazado"}};
+    const query = {User_id: req.params.id, Pago: false};
     pricingSchema.find( query, (error, data) => {
     if (error) {
     return next(error)
