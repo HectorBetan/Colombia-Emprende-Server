@@ -109,8 +109,8 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     })
    })
    // Delete Producto
-   router.route('/delete-carrito/:id').delete((req, res, next) => {
-    productoSchema.findByIdAndRemove(req.params.id, (error, data) =>
+   router.route('/delete-pricing/:id').delete((req, res, next) => {
+    pricingSchema.findByIdAndRemove(req.params.id, (error, data) =>
    {
     if (error) {
     return next(error);
