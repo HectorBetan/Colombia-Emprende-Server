@@ -123,7 +123,6 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
    })
    router.route('/create-envio/:id').put((req, res, next) => {
     const envio = {
-        Pago: true,
         Estado: "envio",
         Info_Envio: {
             Id: new mongoose.Types.ObjectId(),
