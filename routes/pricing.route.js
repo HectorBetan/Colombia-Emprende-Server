@@ -88,7 +88,7 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
    router.route('/create-order/:id').put((req, res, next) => {
     const pricing = {
         Pago: true,
-        Estado: "Pagado",
+        Estado: "pagado",
         Info_Pago: {
             Id: new mongoose.Types.ObjectId(),
             Tipo_Pago: req.body.Tipo_Pago,
@@ -121,5 +121,28 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     }
     })
    })
-   
+   router.route('/create-envio/:id').put((req, res, next) => {
+    const envio = {
+        Pago: true,
+        Estado: "envio",
+        Info_Envio: {
+            Id: new mongoose.Types.ObjectId(),
+            Fecha_Envio: req.body.Fecha_Envio,
+            Empresa_Envio: req.body.Empresa_Envio,
+            Numero_Guia: req.body.Numero_Guia,
+            Comentarios_Envio: req.body.Comentarios_Envio,
+        },
+    }
+    pricingSchema.findByIdAndUpdate(req.params.id, {
+        
+    $set: envio
+    }, (error, data) => {
+    if (error) {
+    return next(error);
+    console.log(error)
+    } else {
+    res.json(data)
+    }
+    })
+   })
    module.exports = router;

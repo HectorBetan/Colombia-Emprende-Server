@@ -37,11 +37,8 @@ let pricingSchema = new Schema({
     Info_Pago:{
         type: Object
     },
-    Fecha_Envio:{
-        type: String
-    },
-    Numero_Guia: {
-        type:String
+    Info_Envio:{
+        type: Object
     },
     },
     {
