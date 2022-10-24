@@ -40,6 +40,9 @@ let pricingSchema = new Schema({
     Info_Envio:{
         type: Object
     },
+    Comentarios_Finales:{
+        type: String,
+    },
     },
     {
         collection: 'pricings'
