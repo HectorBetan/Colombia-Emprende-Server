@@ -43,6 +43,12 @@ let pricingSchema = new Schema({
     Comentarios_Finales:{
         type: String,
     },
+    User_Delete:{
+        type: Boolean,
+    },
+    Store_Delete:{
+        type: Boolean,
+    },
     },
     {
         collection: 'pricings'
