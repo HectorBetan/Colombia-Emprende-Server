@@ -98,4 +98,20 @@ router.route('/get-stores').post((req, res, next) => {
     }
     })
 })
+router.route('/set-stars/:id').put((req, res, next) => {
+    let calificacion = {
+        Estrellas: req.body.Stars,
+        Comentario: req.body.Comentario
+    }
+    storeSchema.findByIdAndUpdate(req.params.id, {
+        $push:{Calificacion:calificacion}
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            console.log(data);
+            res.json(data)
+        }
+    })
+})
 module.exports = router;
