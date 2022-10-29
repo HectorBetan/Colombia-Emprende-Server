@@ -144,5 +144,28 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     }
     })
    })
-   
+   router.route('/set-user-problem/:id').put((req, res, next) => {
+    pricingSchema.findByIdAndUpdate(req.params.id, {
+        $push:{User_Problem:req.body.User_Problem}
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            console.log(data);
+            res.json(data)
+        }
+    })
+})
+router.route('/set-store-problem/:id').put((req, res, next) => {
+    pricingSchema.findByIdAndUpdate(req.params.id, {
+        $push:{Store_Problem:req.body.Store_Problem}
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            console.log(data);
+            res.json(data)
+        }
+    })
+})
    module.exports = router;

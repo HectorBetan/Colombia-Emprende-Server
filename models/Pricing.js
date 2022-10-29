@@ -49,6 +49,12 @@ let pricingSchema = new Schema({
     Store_Delete:{
         type: Boolean,
     },
+    User_Problem:{
+        type: Array,
+    },
+    Store_Problem:{
+        type: Array,
+    }
     },
     {
         collection: 'pricings'
