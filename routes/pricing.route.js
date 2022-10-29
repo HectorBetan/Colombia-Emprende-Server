@@ -145,7 +145,11 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     })
    })
    router.route('/set-user-problem/:id').put((req, res, next) => {
+    const problema = {
+        Estado: "problema",
+    }
     pricingSchema.findByIdAndUpdate(req.params.id, {
+        $set: problema,
         $push:{User_Problem:req.body.User_Problem}
     }, (error, data) => {
         if (error) {
