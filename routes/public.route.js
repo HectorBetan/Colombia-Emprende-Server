@@ -21,7 +21,7 @@ router.route('/products').get((req, res) => {
         }
     })
 })
-router.route('/5-stores').get((req, res) => {
+router.route('/6-stores').get((req, res) => {
     storeSchema.find((error, data) => {
         if (error) {
             return next(error)
