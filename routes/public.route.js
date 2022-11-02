@@ -26,6 +26,7 @@ router.route('/5-stores').get((req, res) => {
         if (error) {
             return next(error)
         } else {
+            console.log(data)
             res.json(data)
         }
     }).limit(6).sort({$natural:-1});
