@@ -19,8 +19,11 @@ let pricingSchema = new Schema({
     Otros_Valores: {
         type: Number
     },
-    Descuento:{
-        type: Number
+    Ciudad_Envio:{
+        type: String
+    },
+    Direccion_Envio:{
+        type: String
     },
     User_Comentarios: {
         type: String
@@ -41,19 +44,22 @@ let pricingSchema = new Schema({
         type: Object
     },
     Comentarios_Finales:{
-        type: String,
+        type: String
     },
     User_Delete:{
-        type: Boolean,
+        type: Boolean
     },
     Store_Delete:{
-        type: Boolean,
+        type: Boolean
     },
     User_Problem:{
-        type: Array,
+        type: Array
     },
     Store_Problem:{
-        type: Array,
+        type: Array
+    },
+    Calificacion:{
+        type: Boolean
     }
     },
     {

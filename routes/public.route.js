@@ -21,4 +21,13 @@ router.route('/products').get((req, res) => {
         }
     })
 })
+router.route('/5-stores').get((req, res) => {
+    storeSchema.find((error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    }).limit(6).sort({$natural:-1});
+})
 module.exports = router;

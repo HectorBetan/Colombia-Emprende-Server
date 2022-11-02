@@ -99,9 +99,12 @@ router.route('/get-stores').post((req, res, next) => {
     })
 })
 router.route('/set-stars/:id').put((req, res, next) => {
+    let fecha = new Date();
     let calificacion = {
+        Usuario: req.body.Usuario,
         Estrellas: req.body.Stars,
-        Comentario: req.body.Comentario
+        Comentario: req.body.Comentario,
+        Fecha: fecha.getDate(),
     }
     storeSchema.findByIdAndUpdate(req.params.id, {
         $push:{Calificacion:calificacion}
