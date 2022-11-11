@@ -4,7 +4,8 @@ router = express.Router();
 let storeSchema = require('../models/Stores');
 let productSchema = require('../models/Products');
 router.route('/').get((req, res) => {
-    storeSchema.find((error, data) => {
+    const query = {Delete: {$nin:true}}
+    storeSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
         } else {

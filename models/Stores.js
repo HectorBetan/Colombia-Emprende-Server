@@ -46,6 +46,9 @@ let storeSchema = new Schema({
     Path: {
         type: String,
         unique: true
+    },
+    Delete:{
+        type: Boolean,
     }
 }, {
  collection: 'emprendimientos'
