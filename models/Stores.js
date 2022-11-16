@@ -11,10 +11,10 @@ let storeSchema = new Schema({
         type: String,
     },
     Celular: {
-        type: Number,
+        type: String,
     },
     Telefono: {
-        type: Number,
+        type: String,
     },
     Direccion: {
         type: String,
