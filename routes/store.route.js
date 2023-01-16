@@ -34,11 +34,7 @@ router.route('/create-store').post((req, res, next) => {
     })
 });
 router.route(`/get-store`).post((req, res) => {
-    if(req.headers.token === null){
-        return res.status(403).send({mensaje:"sin autorización"});
-    }
-    const payload = auth.isAuth(req.headers.token);
-    const query = {User_id: payload._id};
+    const query = {User_id: req.body.user_id};
     storeSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
