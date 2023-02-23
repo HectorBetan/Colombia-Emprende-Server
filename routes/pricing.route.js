@@ -23,7 +23,7 @@ router.route('/get-pricing/:id').get((req, res, next) => {
     if (error) {
     return next(error)
     } else {
-        console.log(data)
+
     res.json(data)
     }
     })
@@ -35,7 +35,7 @@ router.route('/get-store-pricing/:id').get((req, res, next) => {
     if (error) {
     return next(error)
     } else {
-        console.log(data)
+
     res.json(data)
     }
     })
@@ -46,7 +46,7 @@ router.route('/get-orders/:id').get((req, res, next) => {
     if (error) {
     return next(error)
     } else {
-        console.log(data)
+
     res.json(data)
     }
     })
@@ -57,8 +57,19 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     if (error) {
     return next(error)
     } else {
-        console.log(data)
+
     res.json(data)
+    }
+    })
+})
+router.route('/get-store-pays/:id').get((req, res, next) => {
+    const query = {Emprendimiento_id: req.params.id, Pago: true, Estado: {$nin:"finalizado"}};
+    pricingSchema.find( query, (error, data) => {
+    if (error) {
+    return next(error)
+    } else {
+        console.log(data)
+        res.json(data)
     }
     })
 })
@@ -121,6 +132,7 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     }
     })
    })
+   
    router.route('/create-envio/:id').put((req, res, next) => {
     const envio = {
         Estado: "envio",
@@ -138,7 +150,6 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
     }, (error, data) => {
     if (error) {
     return next(error);
-    console.log(error)
     } else {
     res.json(data)
     }
@@ -155,7 +166,6 @@ router.route('/get-store-orders/:id').get((req, res, next) => {
         if (error) {
             return next(error);
         } else {
-            console.log(data);
             res.json(data)
         }
     })
@@ -167,7 +177,6 @@ router.route('/set-store-problem/:id').put((req, res, next) => {
         if (error) {
             return next(error);
         } else {
-            console.log(data);
             res.json(data)
         }
     })

@@ -24,6 +24,9 @@ let userSchema = new Schema({
     Emprendimiento_id:{
         type: String
     },
+    Delete:{
+        type: Boolean,
+    }
 },
 {
     collection: 'usuarios'

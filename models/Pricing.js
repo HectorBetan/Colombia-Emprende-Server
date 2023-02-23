@@ -7,6 +7,7 @@ let pricingSchema = new Schema({
     Emprendimiento_id: {
         type: String
     },
+    
     Pedidos: {
         type: Array
     },
