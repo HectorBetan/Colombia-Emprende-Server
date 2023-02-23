@@ -69,18 +69,33 @@ router.route('/update-store').put((req, res, next) => {
         }
     })
 })
-router.route('/delete-store').post((req, res, next) => {
+router.route('/delete-store').put((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    storeSchema.findByIdAndRemove(payload.Emprendimiento_id, (error, data) =>{
+    const setData = {
+        Delete: true,
+        User_id: new mongoose.Types.ObjectId(),
+        Telefono: "",
+        Descripcion: "",
+        Imagen: "",
+        Facebook: "",
+        Instagram: "",
+        Web: "",
+        Ciudad: req.body.Ciudad,
+        Categoria: req.body.Categoria,
+        Calificacion: req.body.Calificacion,
+        Path: "",
+    }
+    storeSchema.findByIdAndUpdate(payload.Emprendimiento_id, {
+        $set: setData
+    }, (error, data) => {
         if (error) {
             return next(error);
         } else {
-            res.status(200).json({
-            msg: data
-        })
+            console.log(data);
+            res.json(data)
         }
     })
 })
