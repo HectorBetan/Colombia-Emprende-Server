@@ -54,18 +54,24 @@ router.route('/update-user').put((req, res, next) => {
         }
     })
 })
-router.route('/delete-user/:id').delete((req, res, next) => {
+router.route('/delete-user').put((req, res, next) => {
     if(req.headers.token===null){
         return res.status(403).send({mensaje:"sin autorización"});
     }
     const payload = auth.isAuth(req.headers.token);
-    userSchema.findByIdAndRemove(payload._id, (error, data) =>{
+    const setData = {
+        Delete: true,
+        Uid: new mongoose.Types.ObjectId(),
+        Email: "",
+        Emprendimiento_id: "",
+    }
+    userSchema.findByIdAndUpdate(payload._id, {
+        $set: setData
+    }, (error, data) => {
         if (error) {
             return next(error);
         } else {
-            res.status(200).json({
-            msg: data
-        })
+            res.json(data);
         }
     })
 })

@@ -73,6 +73,17 @@ router.route('/get-store-pays/:id').get((req, res, next) => {
     }
     })
 })
+router.route('/get-user-pays/:id').get((req, res, next) => {
+    const query = {User_id: req.params.id, Pago: true, Estado: {$nin:"finalizado"}};
+    pricingSchema.find( query, (error, data) => {
+    if (error) {
+    return next(error)
+    } else {
+        console.log(data)
+        res.json(data)
+    }
+    })
+})
    router.route('/get-product/:id').get((req, res, next) => {
     pricingSchema.findById(req.params.id, (error, data) => {
     if (error) {

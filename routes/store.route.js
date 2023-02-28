@@ -83,9 +83,6 @@ router.route('/delete-store').put((req, res, next) => {
         Facebook: "",
         Instagram: "",
         Web: "",
-        Ciudad: req.body.Ciudad,
-        Categoria: req.body.Categoria,
-        Calificacion: req.body.Calificacion,
         Path: "",
     }
     storeSchema.findByIdAndUpdate(payload.Emprendimiento_id, {
@@ -94,7 +91,6 @@ router.route('/delete-store').put((req, res, next) => {
         if (error) {
             return next(error);
         } else {
-            console.log(data);
             res.json(data)
         }
     })
