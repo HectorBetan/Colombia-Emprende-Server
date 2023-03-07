@@ -65,13 +65,14 @@ router.route('/delete-product/:id').post((req, res, next) => {
     if (payload._id !== req.body.User_id) {
         return res.status(403).send({mensaje:"sin autorización"});
     }
-    productSchema.findByIdAndRemove(req.params.id, (error, data) =>{
+    const setData = {
+        Delete: true,
+    }
+    productSchema.findByIdAndUpdate(req.params.id,{$set: setData}, (error, data) =>{
         if (error) {
             return next(error);
         } else {
-            res.status(200).json({
-            msg: data
-        })
+            res.json(data)
         }
     })
 })

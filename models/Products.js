@@ -22,6 +22,9 @@ let productSchema = new Schema({
     User_id: {
         type: String,
     },
+    Delete:{
+        type: Boolean,
+    },
 },
 {
     collection: 'productos'
