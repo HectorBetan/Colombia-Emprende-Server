@@ -56,7 +56,7 @@ router.route('/update-product/:id').put((req, res, next) => {
         }
     })
 })
-router.route('/delete-product/:id').post((req, res, next) => {
+router.route('/delete-product/:id').put((req, res, next) => {
     if(!req.headers.token){
         return res.status(403).send({mensaje:"sin autorización"});
     }
