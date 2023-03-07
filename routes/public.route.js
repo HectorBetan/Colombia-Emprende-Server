@@ -14,7 +14,8 @@ router.route('/').get((req, res) => {
     })
 })
 router.route('/products').get((req, res) => {
-    productSchema.find((error, data) => {
+    const query = {Delete: {$nin:true}}
+    productSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -23,7 +24,8 @@ router.route('/products').get((req, res) => {
     })
 })
 router.route('/six-stores').get((req, res) => {
-    storeSchema.find((error, data) => {
+    const query = {Delete: {$nin:true}}
+    storeSchema.find(query,(error, data) => {
         if (error) {
             return next(error)
         } else {
