@@ -1,70 +1,70 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-let pricingSchema = new Schema({
+let pricingSchema = new Schema(
+  {
     User_id: {
-        type: String
+      type: String,
     },
     Emprendimiento_id: {
-        type: String
+      type: String,
     },
-    
     Pedidos: {
-        type: Array
+      type: Array,
     },
     Fecha: {
-        type: Date
+      type: Date,
     },
     Valor_Envio: {
-        type: Number
+      type: Number,
     },
     Otros_Valores: {
-        type: Number
+      type: Number,
     },
-    Ciudad_Envio:{
-        type: String
+    Ciudad_Envio: {
+      type: String,
     },
-    Direccion_Envio:{
-        type: String
+    Direccion_Envio: {
+      type: String,
     },
     User_Comentarios: {
-        type: String
+      type: String,
     },
     Comentarios: {
-        type: String
+      type: String,
     },
-    Estado:{
-        type: String
+    Estado: {
+      type: String,
     },
-    Pago:{
-        type: Boolean
+    Pago: {
+      type: Boolean,
     },
-    Info_Pago:{
-        type: Object
+    Info_Pago: {
+      type: Object,
     },
-    Info_Envio:{
-        type: Object
+    Info_Envio: {
+      type: Object,
     },
-    Comentarios_Finales:{
-        type: String
+    Comentarios_Finales: {
+      type: String,
     },
-    User_Delete:{
-        type: Boolean
+    User_Delete: {
+      type: Boolean,
     },
-    Store_Delete:{
-        type: Boolean
+    Store_Delete: {
+      type: Boolean,
     },
-    User_Problem:{
-        type: Array
+    User_Problem: {
+      type: Array,
     },
-    Store_Problem:{
-        type: Array
+    Store_Problem: {
+      type: Array,
     },
-    Calificacion:{
-        type: Boolean
-    }
+    Calificacion: {
+      type: Boolean,
     },
-    {
-        collection: 'pricings'
-        })
-        
-module.exports = mongoose.model('Pricing', pricingSchema)
+  },
+  {
+    collection: "pricings",
+  }
+);
+module.exports = mongoose.model("Pricing", pricingSchema);

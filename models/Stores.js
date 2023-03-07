@@ -1,57 +1,59 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-let storeSchema = new Schema({
+let storeSchema = new Schema(
+  {
     User_id: {
-        type: String,
+      type: String,
     },
     Nombre: {
-        type: String,
+      type: String,
     },
     Email: {
-        type: String,
+      type: String,
     },
     Celular: {
-        type: String,
+      type: String,
     },
     Telefono: {
-        type: String,
+      type: String,
     },
     Direccion: {
-        type: String,
+      type: String,
     },
     Descripcion: {
-        type: String,
+      type: String,
     },
     Imagen: {
-        type: String,
+      type: String,
     },
     Facebook: {
-        type: String,
+      type: String,
     },
     Instagram: {
-        type: String,
+      type: String,
     },
     Web: {
-        type: String,
+      type: String,
     },
     Ciudad: {
-        type: String,
+      type: String,
     },
     Categoria: {
-        type: String,
+      type: String,
     },
     Calificacion: {
-        type: Array,
+      type: Array,
     },
     Path: {
-        type: String,
-        unique: true
+      type: String,
+      unique: true,
     },
-    Delete:{
-        type: Boolean,
-    }
-}, {
- collection: 'emprendimientos'
- })
- 
-module.exports = mongoose.model('Emprendimiento', storeSchema)
+    Delete: {
+      type: Boolean,
+    },
+  },
+  {
+    collection: "emprendimientos",
+  }
+);
+module.exports = mongoose.model("Emprendimiento", storeSchema);
