@@ -80,6 +80,7 @@ router.route("/delete-store").put((req, res, next) => {
   const setData = {
     Delete: true,
     User_id: new mongoose.Types.ObjectId(),
+    Email: new mongoose.Types.ObjectId(),
     Telefono: "",
     Descripcion: "",
     Imagen: "",
