@@ -66,7 +66,7 @@ router.route("/delete-user").put((req, res, next) => {
   const setData = {
     Delete: true,
     Uid: new mongoose.Types.ObjectId(),
-    Email: "",
+    Email: new mongoose.Types.ObjectId(),
     Emprendimiento_id: "",
   };
   userSchema.findByIdAndUpdate(
