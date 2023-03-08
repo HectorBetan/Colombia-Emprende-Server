@@ -76,6 +76,7 @@ router.route("/delete-store").put((req, res, next) => {
   if (!req.headers.token) {
     return res.status(403).send({ mensaje: "sin autorización" });
   }
+  
   const payload = auth.isAuth(req.headers.token);
   const setData = {
     Delete: true,
