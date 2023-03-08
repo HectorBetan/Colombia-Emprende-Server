@@ -88,6 +88,7 @@ router.route("/delete-store").put((req, res, next) => {
     Instagram: "",
     Web: "",
     Path: new mongoose.Types.ObjectId(),
+    
   };
   storeSchema.findByIdAndUpdate(
     payload.Emprendimiento_id,
