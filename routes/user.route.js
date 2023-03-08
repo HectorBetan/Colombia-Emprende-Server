@@ -58,7 +58,6 @@ router.route("/update-user").put((req, res, next) => {
     }
   );
 });
-
 router.route("/del-user").put((req, res, next) => {
   if (req.headers.token === null) {
     return res.status(403).send({ mensaje: "sin autorización" });
