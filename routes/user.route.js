@@ -76,6 +76,7 @@ router.route("/delete-user").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
