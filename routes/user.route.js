@@ -84,4 +84,22 @@ router.route("/del-user").put((req, res, next) => {
     }
   );
 });
+router.route("/delete-user").delete((req, res, next) => {
+  if (req.headers.token === null) {
+    return res.status(403).send({ mensaje: "sin autorización" });
+  }
+  const payload = auth.isAuth(req.headers.token);
+  userSchema.findByIdAndRemove(
+    payload._id,
+    (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.status(200).json({
+          msg: data,
+        });
+      }
+    }
+  );
+});
 module.exports = router;
