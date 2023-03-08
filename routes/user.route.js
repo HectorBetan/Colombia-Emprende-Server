@@ -89,7 +89,7 @@ router.route("/delete-user/:id").delete((req, res, next) => {
     return res.status(403).send({ mensaje: "sin autorización" });
   }
   console.log(req.params.id)
-  userSchema.findByIdAndDelete(
+  userSchema.findByIdAndRemove(
     req.params.id,
     (error, data) => {
       if (error) {
