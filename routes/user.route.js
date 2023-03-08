@@ -88,9 +88,8 @@ router.route("/delete-user").delete((req, res, next) => {
   if (req.headers.token === null) {
     return res.status(403).send({ mensaje: "sin autorización" });
   }
-  const payload = auth.isAuth(req.headers.token);
   userSchema.findByIdAndDelete(
-    payload._id,
+    req.body,
     (error, data) => {
       if (error) {
         return next(error);
