@@ -1,6 +1,8 @@
 let mongoose = require("mongoose"),
 express = require("express");
+const jwt = require("jsonwebtoken");
 const auth = require("../services/auth.js");
+const settings = require("../config/settings.js");
 router = express.Router();
 let userSchema = require("../models/Users");
 router.route("/create-user").post((req, res, next) => {
@@ -37,7 +39,7 @@ router.route("/get-user-info").post((req, res, next) => {
   });
 });
 router.route("/update-user").put((req, res, next) => {
-  if (!req.headers.token) {
+  if (req.headers.token === null) {
     return res.status(403).send({ mensaje: "sin autorización" });
   }
   const payload = auth.isAuth(req.headers.token);
@@ -57,7 +59,7 @@ router.route("/update-user").put((req, res, next) => {
   );
 });
 router.route("/del-user").put((req, res, next) => {
-  if (!req.headers.token) {
+  if (req.headers.token === null) {
     return res.status(403).send({ mensaje: "sin autorización" });
   }
   const payload = auth.isAuth(req.headers.token);
