@@ -35,7 +35,7 @@ router.route("/create-store").post((req, res, next) => {
   });
 });
 router.route(`/get-store`).post((req, res) => {
-  const query = { User_id: req.body.user_id };
+  const query = { User_id: req.body.user_id, Delete: { $nin: true } };
   storeSchema.find(query, (error, data) => {
     if (error) {
       console.log(error);
