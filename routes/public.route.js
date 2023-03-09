@@ -7,6 +7,7 @@ router.route("/").get((req, res) => {
   const query = { Delete: { $nin: true } };
   storeSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -17,6 +18,7 @@ router.route("/products").get((req, res) => {
   const query = { Delete: { $nin: true } };
   productSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -28,6 +30,7 @@ router.route("/six-stores").get((req, res) => {
   storeSchema
     .find(query, (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);

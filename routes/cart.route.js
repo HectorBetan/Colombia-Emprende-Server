@@ -11,6 +11,7 @@ router.route("/create-cart").post((req, res, next) => {
   };
   cartSchema.create(cart, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -21,6 +22,7 @@ router.route("/get-cart/:id").get((req, res, next) => {
   const query = { User_id: req.params.id };
   cartSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -31,6 +33,7 @@ router.route("/get-pedidos/:id").get((req, res, next) => {
   const query = { UserEmail: req.params.id, Estado: { $in: "en cotizacion" } };
   cartSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -41,6 +44,7 @@ router.route("/get-pedidos").post((req, res, next) => {
   const query = { _id: { $in: req.body.id } };
   cartSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -54,6 +58,7 @@ router.route("/get-pedidos-emprendedor/:id").get((req, res, next) => {
   };
   cartSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -64,6 +69,7 @@ router.route("/get-product/:id").get((req, res, next) => {
   const query = { UserEmail: req.params.id };
   cartSchema.findById(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -78,6 +84,7 @@ router.route("/update-cart/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -94,6 +101,7 @@ router.route("/update-carts").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -110,6 +118,7 @@ router.route("/update-carrito-cotizar").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -120,6 +129,7 @@ router.route("/update-carrito-cotizar").put((req, res, next) => {
 router.route("/delete-cart/:id").delete((req, res, next) => {
   cartSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.status(200).json({
@@ -132,6 +142,7 @@ router.route("/delete-carts").post((req, res, next) => {
   const query = { _id: { $in: req.body.id } };
   cartSchema.deleteMany(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.status(200).json({

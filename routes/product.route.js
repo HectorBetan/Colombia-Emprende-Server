@@ -18,6 +18,7 @@ router.route("/create-product").post((req, res, next) => {
   };
   productSchema.create(product, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -28,6 +29,7 @@ router.route("/get-store-products").post((req, res, next) => {
   const query = { User_id: req.body.id };
   productSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -49,6 +51,7 @@ router.route("/update-product/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -71,7 +74,8 @@ router.route("/delete-product/:id").put((req, res, next) => {
     req.params.id,
     { $set: setData },
     (error, data) => {
-      if (error) {
+      if (error) 
+      {console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -83,6 +87,7 @@ router.route("/get-products").post((req, res, next) => {
   const query = { _id: { $in: req.body } };
   productSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);

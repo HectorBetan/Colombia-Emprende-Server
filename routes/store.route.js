@@ -27,6 +27,7 @@ router.route("/create-store").post((req, res, next) => {
   };
   storeSchema.create(store, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -37,6 +38,7 @@ router.route(`/get-store`).post((req, res) => {
   const query = { User_id: req.body.user_id };
   storeSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -47,6 +49,7 @@ router.route(`/find-store-path/:path`).get((req, res) => {
   const query = { Path: req.params.path };
   storeSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -65,6 +68,7 @@ router.route("/update-store").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -97,6 +101,7 @@ router.route("/delete-store").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -129,6 +134,7 @@ router.route("/set-stars/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);

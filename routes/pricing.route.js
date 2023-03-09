@@ -5,6 +5,7 @@ let pricingSchema = require("../models/Pricing");
 router.route("/create-pricing").post((req, res, next) => {
   pricingSchema.create(req.body, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -15,6 +16,7 @@ router.route("/get-pricing/:id").get((req, res, next) => {
   const query = { User_id: req.params.id, Pago: false };
   pricingSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -25,6 +27,7 @@ router.route("/get-store-pricing/:id").get((req, res, next) => {
   const query = { Emprendimiento_id: req.params.id, Pago: false };
   pricingSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -35,6 +38,7 @@ router.route("/get-orders/:id").get((req, res, next) => {
   const query = { User_id: req.params.id, Pago: true };
   pricingSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -45,6 +49,7 @@ router.route("/get-store-orders/:id").get((req, res, next) => {
   const query = { Emprendimiento_id: req.params.id, Pago: true };
   pricingSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -59,6 +64,7 @@ router.route("/get-store-pays/:id").get((req, res, next) => {
   };
   pricingSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -73,6 +79,7 @@ router.route("/get-user-pays/:id").get((req, res, next) => {
   };
   pricingSchema.find(query, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -82,6 +89,7 @@ router.route("/get-user-pays/:id").get((req, res, next) => {
 router.route("/get-product/:id").get((req, res, next) => {
   pricingSchema.findById(req.params.id, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.json(data);
@@ -96,6 +104,7 @@ router.route("/update-pricing/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -121,6 +130,7 @@ router.route("/create-order/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -131,6 +141,7 @@ router.route("/create-order/:id").put((req, res, next) => {
 router.route("/delete-pricing/:id").delete((req, res, next) => {
   pricingSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
+      console.log(error);
       return next(error);
     } else {
       res.status(200).json({
@@ -157,6 +168,7 @@ router.route("/create-envio/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -176,6 +188,7 @@ router.route("/set-user-problem/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
@@ -191,6 +204,7 @@ router.route("/set-store-problem/:id").put((req, res, next) => {
     },
     (error, data) => {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         res.json(data);
