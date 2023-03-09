@@ -26,7 +26,7 @@ router.route("/create-product").post((req, res, next) => {
   });
 });
 router.route("/get-store-products").post((req, res, next) => {
-  const query = { User_id: req.body.id };
+  const query = { User_id: req.body.id, Delete: { $nin: true } };
   productSchema.find(query, (error, data) => {
     if (error) {
       console.log(error);
