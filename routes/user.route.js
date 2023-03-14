@@ -3,6 +3,7 @@ express = require("express");
 const jwt = require("jsonwebtoken");
 const auth = require("../services/auth.js");
 const settings = require("../config/settings.js");
+const config = require("../config/config.js");
 router = express.Router();
 let userSchema = require("../models/Users");
 router.route("/create-user").post((req, res, next) => {
@@ -23,7 +24,7 @@ router.route(`/get-user/:uid`).get((req, res) => {
     if (error) {
       return next(error);
     } else {
-      const token = jwt.sign({ data }, settings.secret);
+      const token = jwt.sign({ data }, config.SECRET);
       res.json({ data: data, token: token });
     }
   });
