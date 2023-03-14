@@ -1,3 +1,4 @@
 module.exports = {
-    secret: "colombiaemprendeapp"
+    secret: "colombiaemprendeapp",
+    password: "COLOMBIA0emprende"
 };
