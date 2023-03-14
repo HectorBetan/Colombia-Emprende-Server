@@ -12,15 +12,6 @@ let transporter = nodemailer.createTransport({
     pass: "5U4aJQ97xIfEpZYg",
   },
 });
-let transporter1 = nodemailer.createTransport({
-  pool: true,
-  host: "smtp.gmail.com",
-  port: 587,
-  auth: {
-    user: "colombia.emprende.co@gmail.com",
-    pass: "COLOMBIA0emprende",
-  },
-});
 let storeSchema = require("../models/Stores");
 let productSchema = require("../models/Products");
 router.route("/").get((req, res) => {
@@ -62,12 +53,12 @@ router.route("/six-stores").get((req, res) => {
 router.route("/enviar-email").post((req, res, next) => {
   let msj = "hola desde colombia emprende"
   let mailOptions = {
-    from: 'colombia.emprende.co@gmail.com',
+    from: 'info@colombiaemprende.co',
     to: 'hectorbetancourt1992@gmail.com',
     subject: 'Asunto Del Correo',
     text: msj
   };
-  transporter1.sendMail(mailOptions, function(error, info){
+  transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
     }
