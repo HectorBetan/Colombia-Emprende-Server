@@ -7,7 +7,6 @@ let transporter = nodemailer.createTransport({
   pool: true,
   host: "smtp-relay.sendinblue.com",
   port: 587,
-  secure: true, // use TLS
   auth: {
     user: "hectorbetancourt1992@gmail.com",
     pass: "5U4aJQ97xIfEpZYg",
@@ -59,6 +58,7 @@ router.route("/enviar-email").post((req, res, next) => {
     subject: 'Asunto Del Correo',
     text: msj
   };
+  console.log("aqui")
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
