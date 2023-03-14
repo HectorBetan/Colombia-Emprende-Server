@@ -59,6 +59,7 @@ router.route("/enviar-email").post((req, res, next) => {
     text: mail.Msj,
     html: mail.Html
   };
+  
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
