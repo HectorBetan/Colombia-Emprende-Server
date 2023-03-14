@@ -3,13 +3,12 @@ express = require("express");
 router = express.Router();
 const config = require("../config/config.js");
 nodemailer = require('nodemailer');
-const settings = require("../config/settings.js");
 let transporter = nodemailer.createTransport({
   pool: true,
   host: "smtp-relay.sendinblue.com",
   port: 587,
   auth: {
-    user: "colombia.emprende.co@gmail.com",
+    user: config.MAIL,
     pass: config.PASSWORD,
   },
 });

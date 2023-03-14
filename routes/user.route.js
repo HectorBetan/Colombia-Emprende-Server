@@ -2,7 +2,6 @@ let mongoose = require("mongoose"),
 express = require("express");
 const jwt = require("jsonwebtoken");
 const auth = require("../services/auth.js");
-const settings = require("../config/settings.js");
 const config = require("../config/config.js");
 router = express.Router();
 let userSchema = require("../models/Users");

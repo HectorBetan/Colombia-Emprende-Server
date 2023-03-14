@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const settings = require("../config/settings");
+const config = require("../config/config.js");
 function isAuth(token) {
-  const secret = "colombiaemprendeapp";
+  const secret = config.SECRET;
   const auth = token.split(" ")[1];
   if (!token) {
     return res.status(403).send({ mensaje: "sin autorización" });
