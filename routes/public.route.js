@@ -7,7 +7,7 @@ let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'colombia.emprende.co@gmail.com',
-    pass: settings.password
+    pass: 'COLOMBIA0emprende'
   }
 });
 let storeSchema = require("../models/Stores");
