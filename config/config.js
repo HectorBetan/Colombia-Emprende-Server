@@ -1,3 +1,5 @@
-require('dotenv').config();
-export const SECRET = process.env.SECRET;
-export const PASSWORD = process.env.HOST;
+const dotenv = require('dotenv').config();
+module.exports = {
+  SECRET: process.env.SECRET,
+  PASSWORD: process.env.HOST,
+}
