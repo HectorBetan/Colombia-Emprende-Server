@@ -4,11 +4,14 @@ router = express.Router();
 nodemailer = require('nodemailer');
 const settings = require("../config/settings.js");
 let transporter = nodemailer.createTransport({
-  service: 'gmail',
+  pool: true,
+  host: "smtp-relay.sendinblue.com",
+  port: 587,
+  secure: true, // use TLS
   auth: {
-    user: 'colombia.emprende.co@gmail.com',
-    pass: 'COLOMBIA0emprende'
-  }
+    user: "hectorbetancourt1992@gmail.com",
+    pass: "5U4aJQ97xIfEpZYg",
+  },
 });
 let storeSchema = require("../models/Stores");
 let productSchema = require("../models/Products");
