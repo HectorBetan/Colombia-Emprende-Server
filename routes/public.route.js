@@ -67,12 +67,9 @@ router.route("/enviar-email").post((req, res, next) => {
     subject: 'Asunto Del Correo',
     text: msj
   };
-  console.log("aqui")
   transporter1.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
-    } else {
-      console.log('Email enviado: ' + info.response);
     }
   });
 })
