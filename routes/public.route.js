@@ -51,12 +51,13 @@ router.route("/six-stores").get((req, res) => {
     .sort({ $natural: -1 });
 });
 router.route("/enviar-email").post((req, res, next) => {
-  let msj = "hola desde colombia emprende"
+  let mail = req.body
   let mailOptions = {
-    from: 'info@colombiaemprende.co',
-    to: 'hectorbetancourt1992@gmail.com',
-    subject: 'Asunto Del Correo',
-    text: msj
+    from: mail.Nombre+" - Colombia Emprende <info@colombiaemprende>",
+    to: mail.Email,
+    subject: mail.Subject,
+    text: mail.Msj,
+    html: mail.Html
   };
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
