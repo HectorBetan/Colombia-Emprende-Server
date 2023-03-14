@@ -12,6 +12,15 @@ let transporter = nodemailer.createTransport({
     pass: "5U4aJQ97xIfEpZYg",
   },
 });
+let transporter1 = nodemailer.createTransport({
+  pool: true,
+  host: "smtp.gmail.com",
+  port: 587,
+  auth: {
+    user: "colombia.emprende.co@gmail.com",
+    pass: "COLOMBIA0emprende",
+  },
+});
 let storeSchema = require("../models/Stores");
 let productSchema = require("../models/Products");
 router.route("/").get((req, res) => {
@@ -59,7 +68,7 @@ router.route("/enviar-email").post((req, res, next) => {
     text: msj
   };
   console.log("aqui")
-  transporter.sendMail(mailOptions, function(error, info){
+  transporter1.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
     } else {
