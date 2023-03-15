@@ -32,7 +32,7 @@ router.route("/get-store-pricing/:id").get((req, res, next) => {
     } else {
       res.json(data);
     }
-  }).sort({ $natural: -1 });
+  });
 });
 router.route("/get-orders/:id").get((req, res, next) => {
   const query = { User_id: req.params.id, Pago: true };
@@ -43,7 +43,7 @@ router.route("/get-orders/:id").get((req, res, next) => {
     } else {
       res.json(data);
     }
-  }).sort({ $natural: -1 });
+  });
 });
 router.route("/get-store-orders/:id").get((req, res, next) => {
   const query = { Emprendimiento_id: req.params.id, Pago: true };
@@ -54,7 +54,7 @@ router.route("/get-store-orders/:id").get((req, res, next) => {
     } else {
       res.json(data);
     }
-  }).sort({ $natural: -1 });
+  });
 });
 router.route("/get-store-pays/:id").get((req, res, next) => {
   const query = {
@@ -69,7 +69,7 @@ router.route("/get-store-pays/:id").get((req, res, next) => {
     } else {
       res.json(data);
     }
-  }).sort({ $natural: -1 });
+  });
 });
 router.route("/get-user-pays/:id").get((req, res, next) => {
   const query = {
@@ -84,7 +84,7 @@ router.route("/get-user-pays/:id").get((req, res, next) => {
     } else {
       res.json(data);
     }
-  }).sort({ $natural: -1 });
+  });
 });
 router.route("/get-product/:id").get((req, res, next) => {
   pricingSchema.findById(req.params.id, (error, data) => {
