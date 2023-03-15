@@ -52,9 +52,8 @@ router.route("/six-stores").get((req, res) => {
 });
 router.route("/enviar-email").post((req, res, next) => {
   let mail = req.body
-  let de = mail.Nombre.toLowerCase().replace(/\s+/g, "");
   let mailOptions = {
-    from: `${mail.Nombre} - Colombia Emprende <${de}@colombiaemprende>`,
+    from: `${mail.Nombre} - Colombia Emprende`,
     to: mail.Email,
     subject: mail.Subject,
     text: mail.Msj,
