@@ -20,6 +20,12 @@ let pricingSchema = new Schema(
     Otros_Valores: {
       type: Number,
     },
+    Justificacion: {
+      type: String,
+    },
+    Envio: {
+      type: Boolean,
+    },
     Ciudad_Envio: {
       type: String,
     },
