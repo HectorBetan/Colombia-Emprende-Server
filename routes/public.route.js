@@ -1,6 +1,7 @@
 let mongoose = require("mongoose"),
 express = require("express");
 router = express.Router();
+const auth = require("../services/auth.js");
 const config = require("../config/config.js");
 nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
@@ -67,6 +68,13 @@ router.route("/enviar-email").post((req, res, next) => {
 })
 router.route("/enviar-user-email").post((req, res, next) => {
   let mail = req.body
+  if (req.headers.token === null) {
+    return res.status(403).send({ mensaje: "sin autorización" });
+  }
+  const payload = auth.isAuth(req.headers.token);
+  if (!payload){
+    return res.status(403).send({ mensaje: "sin autorización" });
+  }
   let mailOptions = {
     from: `Colombia Emprende - ${mail.Nombre} <info@colombiaemprende>`,
     to: mail.Email,
