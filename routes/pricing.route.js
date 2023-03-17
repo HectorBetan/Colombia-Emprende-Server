@@ -178,7 +178,7 @@ router.route("/create-envio/:id").put((req, res, next) => {
 });
 router.route("/create-recoger/:id").put((req, res, next) => {
   const envio = {
-    Estado: "envio",
+    Estado: "recoger",
     Info_Envio: {
       Id: new mongoose.Types.ObjectId(),
       Recogida: req.body.Recogida,
