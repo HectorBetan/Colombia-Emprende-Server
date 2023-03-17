@@ -176,6 +176,30 @@ router.route("/create-envio/:id").put((req, res, next) => {
     }
   );
 });
+router.route("/create-recoger/:id").put((req, res, next) => {
+  const envio = {
+    Estado: "envio",
+    Info_Envio: {
+      Id: new mongoose.Types.ObjectId(),
+      Recogida: req.body.Recogida,
+      Comentarios_Recogida: req.body.Comentarios_Envio,
+    },
+  };
+  pricingSchema.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: envio,
+    },
+    (error, data) => {
+      if (error) {
+        console.log(error);
+        return next(error);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
 router.route("/set-user-problem/:id").put((req, res, next) => {
   const problema = {
     Estado: "problema",
