@@ -182,7 +182,7 @@ router.route("/create-recoger/:id").put((req, res, next) => {
     Info_Envio: {
       Id: new mongoose.Types.ObjectId(),
       Recogida: req.body.Recogida,
-      Comentarios_Recogida: req.body.Comentarios_Envio,
+      Comentarios_Recogida: req.body.Comentarios_Recogida,
     },
   };
   pricingSchema.findByIdAndUpdate(
