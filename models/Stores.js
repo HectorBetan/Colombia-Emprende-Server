@@ -51,6 +51,9 @@ let storeSchema = new Schema(
     Delete: {
       type: Boolean,
     },
+    Recoger:{
+      type: Boolean,
+    },
   },
   {
     collection: "emprendimientos",

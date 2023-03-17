@@ -53,6 +53,9 @@ let pricingSchema = new Schema(
     Comentarios_Finales: {
       type: String,
     },
+    Comentarios_Envio: {
+      type: String,
+    },
     User_Delete: {
       type: Boolean,
     },
