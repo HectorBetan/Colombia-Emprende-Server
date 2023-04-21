@@ -1,6 +1,6 @@
 let mongoose = require("mongoose"),
-express = require("express"),
-router = express.Router();
+  express = require("express"),
+  router = express.Router();
 let cartSchema = require("../models/Cart");
 router.route("/create-cart").post((req, res, next) => {
   const cart = {
